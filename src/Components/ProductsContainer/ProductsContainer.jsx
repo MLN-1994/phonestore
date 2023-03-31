@@ -1,16 +1,26 @@
-import { useEffect } from "react";
-
+import { useEffect, useState } from "react";
+import dataproduct from "../../Data/DataProducts.json"
 function ProductsContainer() {
+
+  const [products, setProducts] = useState([])
+
+
+
+
   const getDatos = () => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve("OK");
+        resolve(dataproduct);
       }, 2000);
     });
   };
 
   useEffect(() => {
-    getDatos().then((res) => {
+
+    getDatos()
+     .then((res) => {
+
+      setProducts(res)
       console.log(res);
     });
   }, []);
