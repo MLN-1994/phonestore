@@ -1,32 +1,27 @@
 import { useEffect, useState } from "react";
-import dataproduct from "../../Data/DataProducts.json";
+import getDatos from "../../Helpers/getDatos";
 
 function ProductsContainer() {
   const [products, setProducts] = useState([]);
 
-  const getDatos = () => {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(dataproduct);
-      }, 2000);
-    });
-  };
+  
 
   useEffect(() => {
-    getDatos().then((res) => {
+    getDatos()
+    .then((res) => {
       setProducts(res);
-      // console.log(res);
+      
     });
   }, []);
 
-  console.log(products);
+  
   ///vas x 1hs 09min
 
   return (
     <>
       <div className=" h-full">
         {products.map((product) => (
-          <div className="">
+          <div key={product.id} className="">
             <div className="border ">
               <div className="p-4 grid grid-cols-6">
                 
