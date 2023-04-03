@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
-import dataproduct from "../../Data/DataProducts.json"
+import dataproduct from "../../Data/DataProducts.json";
+
 function ProductsContainer() {
-
-  const [products, setProducts] = useState([])
-
-
-
+  const [products, setProducts] = useState([]);
 
   const getDatos = () => {
     return new Promise((resolve, reject) => {
@@ -16,39 +13,42 @@ function ProductsContainer() {
   };
 
   useEffect(() => {
-
-    getDatos()
-     .then((res) => {
-
-      setProducts(res)
-      console.log(res);
+    getDatos().then((res) => {
+      setProducts(res);
+      // console.log(res);
     });
   }, []);
 
-
-///vas x el mi 39
-
+  console.log(products);
+  ///vas x 1hs 09min
 
   return (
     <>
-      <div className="">
-
-        <div className="">
-
+      <div className=" h-full">
+        {products.map((product) => (
           <div className="">
-            <img src="" alt="" />
+            <div className="border ">
+              <div className="p-4 grid grid-cols-6">
+                
+                <div className="">
+                  <img className="w-24" src={product.image} alt="" />
+                </div>
+
+                <div className="">
+                  <p className="font-bold ">{product.name}</p>
+                </div>
+
+                <div className="">
+                  <p className="font-semibold">${product.price}</p>
+                </div>
+
+                <div className="col-span-3">
+                  <p>{product.description}</p>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <div className="">
-            <p></p>
-          </div>
-
-          <div className="">
-            <p></p>
-          </div>
-
-        </div>
-
+        ))}
       </div>
     </>
   );
