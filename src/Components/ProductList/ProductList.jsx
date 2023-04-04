@@ -1,13 +1,11 @@
 import React from 'react'
-import SearchImput from '../SearchProduct/SearchImput'
+
 
 const ProductList = ({ products }) => {
   return (
     <>
-    <div className="flex mt-16 px-16">
-      <SearchImput/>
-    </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4 my-6">
+    
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4 ">
         {products.map((product) => (
           <div key={product.id} className="">
             <div className="border my-4 mx-4 shadow rounded-md ">

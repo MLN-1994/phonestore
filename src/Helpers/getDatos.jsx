@@ -11,3 +11,13 @@ export default function getDatos() {
       });
  
 }
+
+
+export const getItemsById = (id) =>{
+  return new Promise ((resolve, reject) =>{
+    setTimeout(()=>{
+      const item = dataproduct.find((element) => element.id === id)
+      resolve(item)
+    }, 2000)
+  })
+}
