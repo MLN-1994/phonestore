@@ -17,7 +17,7 @@ function App() {
 
      
     </div>
-    <ProductDetailContainer/>
+    {/* <ProductDetailContainer/> */}
     </>
     
   )

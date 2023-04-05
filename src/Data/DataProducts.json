@@ -5,7 +5,7 @@
     "description":"Celular 42gb, 16mpx de camara trasera, 8mpx de camara frontal",
     "image":"https://images.fravega.com/f500/c97ee4e75e2a85ff83e8b2107259be9a.png",
     "price":"12312",
-    "stock":""
+    "stock":2
 },
 {
     "id":2,
@@ -14,7 +14,7 @@
     "description":"Celular 42gb, 16mpx de camara trasera, 8mpx de camara frontal",
     "image":"https://images.fravega.com/f500/c97ee4e75e2a85ff83e8b2107259be9a.png",
     "price":"4534",
-    "stock":""
+    "stock":3
 },
 {
     "id":3,
@@ -23,7 +23,7 @@
     "description":"Celular 42gb, 16mpx de camara trasera, 8mpx de camara frontal",
     "image":"https://images.fravega.com/f500/c97ee4e75e2a85ff83e8b2107259be9a.png",
     "price":"4534",
-    "stock":""
+    "stock":6
 },
 {
     "id":4,
@@ -32,7 +32,7 @@
     "description":"Celular 42gb, 16mpx de camara trasera, 8mpx de camara frontal",
     "image":"https://images.fravega.com/f500/c97ee4e75e2a85ff83e8b2107259be9a.png",
     "price":"1231",
-    "stock":""
+    "stock":1
 },
 {
     "id":5,
@@ -41,7 +41,7 @@
     "description":"Celular 42gb, 16mpx de camara trasera, 8mpx de camara frontal",
     "image":"https://images.fravega.com/f500/c97ee4e75e2a85ff83e8b2107259be9a.png",
     "price":"45645",
-    "stock":""
+    "stock":7
 },
 {
     "id":6,
@@ -50,7 +50,7 @@
     "description":"funda para celular c115 color negro",
     "image":"https://www.caseland.com.ar/80-large_default/naruto.jpg",
     "price":"123",
-    "stock":""
+    "stock":15
 },
 {
     "id":7,
@@ -59,7 +59,7 @@
     "description":"funda para celular c115 color negro",
     "image":"https://www.caseland.com.ar/80-large_default/naruto.jpg",
     "price":"321",
-    "stock":""
+    "stock":12
 },
 {
     "id":8,
@@ -68,7 +68,7 @@
     "description":"funda para celular c115 color verde",
     "image":"https://www.caseland.com.ar/80-large_default/naruto.jpg",
     "price":"456",
-    "stock":""
+    "stock":22
 },
 {
     "id":9,
@@ -77,7 +77,7 @@
     "description":"funda para celular c115 color azul",
     "image":"https://www.caseland.com.ar/80-large_default/naruto.jpg",
     "price":"789",
-    "stock":""
+    "stock":32
 },
 {
     "id":10,
@@ -86,7 +86,7 @@
     "description":"funda para celular c115 color negro",
     "image":"https://www.caseland.com.ar/80-large_default/naruto.jpg",
     "price":"456",
-    "stock":""
+    "stock":8
 },
 {
     "id":11,
@@ -95,7 +95,7 @@
     "description":"cargador para iphone sx prmax, cargador turbo, 1 hs 100% de bateria todo el dia",
     "image":"https://www3.gobiernodecanarias.org/medusa/mediateca/ecoescuela/wp-content/uploads/sites/2/2013/11/03-Cargador-de-movil.png",
     "price":"1000",
-    "stock":""
+    "stock":2
 },
 {
     "id":12,
@@ -104,7 +104,7 @@
     "description":"cargador para iphone sx prmax, cargador turbo, 1 hs 100% de bateria todo el dia",
     "image":"https://www3.gobiernodecanarias.org/medusa/mediateca/ecoescuela/wp-content/uploads/sites/2/2013/11/03-Cargador-de-movil.png",
     "price":"1500",
-    "stock":""
+    "stock":8
 },
 {
     "id":13,
@@ -113,7 +113,7 @@
     "description":"cargador para iphone sx prmax, cargador turbo, 1 hs 100% de bateria todo el dia",
     "image":"https://www3.gobiernodecanarias.org/medusa/mediateca/ecoescuela/wp-content/uploads/sites/2/2013/11/03-Cargador-de-movil.png",
     "price":"2000",
-    "stock":""
+    "stock":29
 },
 {
     "id":14,
@@ -122,7 +122,7 @@
     "description":"cargador para iphone sx prmax, cargador turbo, 1 hs 100% de bateria todo el dia",
     "image":"https://www3.gobiernodecanarias.org/medusa/mediateca/ecoescuela/wp-content/uploads/sites/2/2013/11/03-Cargador-de-movil.png",
     "price":"1231",
-    "stock":""
+    "stock":11
 },
 {
     "id":15,
@@ -131,7 +131,7 @@
     "description":"cargador para iphone sx prmax, cargador turbo, 1 hs 100% de bateria todo el dia",
     "image":"https://www3.gobiernodecanarias.org/medusa/mediateca/ecoescuela/wp-content/uploads/sites/2/2013/11/03-Cargador-de-movil.png",
     "price":"1515",
-    "stock":""
+    "stock":16
 },
 {
     "id":16,
@@ -140,7 +140,7 @@
     "description":"cargador para iphone sx prmax, cargador turbo, 1 hs 100% de bateria todo el dia",
     "image":"https://www3.gobiernodecanarias.org/medusa/mediateca/ecoescuela/wp-content/uploads/sites/2/2013/11/03-Cargador-de-movil.png",
     "price":"456",
-    "stock":""
+    "stock":5
 },
 {
     "id":17,
@@ -149,7 +149,7 @@
     "description":"",
     "image":"",
     "price":"",
-    "stock":""
+    "stock":4
 },
 {
     "id":18,
@@ -158,7 +158,7 @@
     "description":"",
     "image":"",
     "price":"",
-    "stock":""
+    "stock":19
 },
 {
     "id":19,
@@ -167,7 +167,7 @@
     "description":"",
     "image":"",
     "price":"",
-    "stock":""
+    "stock":3
 },
 {
     "id":20,
@@ -176,7 +176,7 @@
     "description":"",
     "image":"",
     "price":"",
-    "stock":""
+    "stock":10
 }
 
 ]

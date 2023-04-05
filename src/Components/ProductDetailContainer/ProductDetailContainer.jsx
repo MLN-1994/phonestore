@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getItemsById } from '../../Helpers/getDatos'
+import ProductDetail from '../ProductDetail/ProductDetail'
+
 
 
 export default function ProductDetailContainer() {
@@ -15,7 +17,11 @@ export default function ProductDetailContainer() {
 
   return (
     <>
-
+      <div className="">
+        {
+          item && <ProductDetail {...item}/>
+        }
+      </div>
     </>
   )
 }
