@@ -21,3 +21,14 @@ export const getItemsById = (id) =>{
     }, 2000)
   })
 }
+//Filtrado x categoria
+
+// export const getCategories = (category) =>{
+//   return new Promise ((resolve, reject) =>{
+//     setTimeout(()=>{
+//       const item = dataproduct.filter((element) => element.category === category)
+//       resolve(item)
+//     }, 2000)
+//   })
+// }
+
