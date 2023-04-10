@@ -23,12 +23,14 @@ export const getItemsById = (id) =>{
 }
 //Filtrado x categoria
 
-// export const getCategories = (category) =>{
-//   return new Promise ((resolve, reject) =>{
-//     setTimeout(()=>{
-//       const item = dataproduct.filter((element) => element.category === category)
-//       resolve(item)
-//     }, 2000)
-//   })
-// }
+ export const getCategories = (category) =>{
+   return new Promise ((resolve, reject) =>{
+     setTimeout(()=>{
+       const item = dataproduct.filter((element) => element.category === category)
+       resolve(item)
+        console.log(item)
+     }, 2000)
+    
+   })
+ }
 

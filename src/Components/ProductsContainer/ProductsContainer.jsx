@@ -20,7 +20,6 @@ function ProductsContainer() {
 
   return (
     <>
-      {/* <Header/> */}
       <ProductList products={products}/>
     </>
   );

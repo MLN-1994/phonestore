@@ -4,6 +4,9 @@ import ProductsContainer from "./Components/ProductsContainer/ProductsContainer"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
+
+
+  //min 28:29 rrdom
   return (
     <>
       <BrowserRouter>
