@@ -13,13 +13,16 @@ export default function ProductDetailContainer() {
             .then((data) => {
                 setItem(data)
             })
+            console.log(data)
     },[])
 
+    
   return (
     <>
       <div className="">
         {
           item && <ProductDetail {...item}/>
+          
         }
       </div>
     </>

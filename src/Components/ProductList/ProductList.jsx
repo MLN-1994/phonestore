@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProductList = ({ products }) => {
+const ProductList = ({ products, category }) => {
   return (
     <>
       <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4 ">
@@ -26,6 +26,7 @@ const ProductList = ({ products }) => {
 
                   <div className="my-2">
                     <p>{product.description}</p>
+                    <p >{product.category}</p>
                   </div>
                 </div>
               </div>

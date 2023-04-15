@@ -6,10 +6,19 @@ import CartWidget from '../CartWidget/CartWidget'
 export default function Header() {
   return (
     <>
-        <div className="bg-gray-700 p-4 flex justify-between">
-            <SearchImput/>
-             <Navbar/> 
-            <CartWidget/>
+        <div className="bg-gray-700 p-4 ">
+          <div className="">
+          <Navbar /> 
+          </div>
+          <div className="">
+          <SearchImput />
+          </div>
+          <div className="">
+          <CartWidget/>
+          </div>
+            
+             
+           
         </div>
     </>
   )

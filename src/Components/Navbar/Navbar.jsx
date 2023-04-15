@@ -1,42 +1,17 @@
-import { useEffect, useState } from "react";
-import { getCategories } from "../../Helpers/getDatos";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-function Navbar() {
-  const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
-
-  useEffect(() => {
-    getCategories()
-      .then((res) => {
-        setCategories(res);
-        console.log(res)
-      });
-  }, []);
-
-  const handleCategoryChange = (event) => {
-    setSelectedCategory(event.target.value);
-    console.log(selectedCategory)
-  };
-
+export default function Navbar() {
   return (
     <>
       <div className="">
-        <select
-          className="rounded bg-slate-300 p-2"
-          name=""
-          onChange={handleCategoryChange}
-          value={selectedCategory}
-        >
-          <option value="">Todas las categorías</option>
-          {categories.map((category, index) => (
-            <option key={index} value={category.category}>
-              {category.category}
-            </option>
-          ))}
-        </select>
+        <nav className="">
+          <Link className='' to="/products/phones">Celulares</Link>
+          <Link className='' to="/products/cargadores">Cargadores</Link>
+          <Link className='' to="/products/fundas">Fundas</Link>
+          <Link className='' to="/products/otros">Otros</Link>
+        </nav>
       </div>
     </>
-  );
+  )
 }
-
-export default Navbar;

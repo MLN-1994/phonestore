@@ -1,5 +1,6 @@
 import "./App.css";
 import Header from "./Components/Header/Header";
+import ProductDetail from "./Components/ProductDetail/ProductDetail";
 import ProductsContainer from "./Components/ProductsContainer/ProductsContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -13,6 +14,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<ProductsContainer />} />
+          <Route path="/products/:categoryId" element={<ProductsContainer />} />
+          <Route path="/detail " element={<ProductDetail/>}/>
         </Routes>
       </BrowserRouter>
     </>
