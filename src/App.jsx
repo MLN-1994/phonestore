@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
 
 
-  //min 28:29 rrdom
+  //1:24 hs rrdom
   return (
     <>
       <BrowserRouter>
@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ProductsContainer />} />
           <Route path="/products/:categoryId" element={<ProductsContainer />} />
-          <Route path="/detail " element={<ProductDetail/>}/>
+          <Route path="/detail/:productId" element={<ProductDetail/>}/>
         </Routes>
       </BrowserRouter>
     </>

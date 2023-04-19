@@ -1,20 +1,20 @@
 import React from 'react'
 import SearchImput from "../SearchProduct/SearchImput"
 import CartWidget from '../CartWidget/CartWidget'
- import Navbar from "../Navbar/Navbar"
+ import LinksToCategories from "../LinksToCategories/LinksToCategories"
 
 export default function Header() {
   return (
     <>
-        <div className="bg-gray-700 p-4 ">
+        <div className="bg-gray-700 p-4 flex justify-around items-center">
           <div className="">
-          <Navbar /> 
+            <SearchImput />
           </div>
           <div className="">
-          <SearchImput />
+          <LinksToCategories />
           </div>
           <div className="">
-          <CartWidget/>
+           <CartWidget/>
           </div>
             
              

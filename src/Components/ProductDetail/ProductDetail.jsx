@@ -1,10 +1,11 @@
 import React from 'react'
 
-export default function ProductDetail({id, name, image, description, price, stock, category}) {
+const ProductDetail =({id, name, image, description, price, stock, category}) => {
     
   return (
     <>
         <div className="">
+          <div className="">hola</div>
             <div className="">
                 <img src={image} alt="" />
             </div>
@@ -24,3 +25,4 @@ export default function ProductDetail({id, name, image, description, price, stoc
     </>
   )
 }
+export default ProductDetail

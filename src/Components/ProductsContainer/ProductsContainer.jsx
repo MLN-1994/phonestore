@@ -29,7 +29,7 @@ function ProductsContainer() {
   
 
   return (
-    <>
+    <>  
       <ProductList products={products}/>
     </>
   );

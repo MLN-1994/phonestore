@@ -4,17 +4,25 @@ import ProductDetail from '../ProductDetail/ProductDetail'
 
 
 
-export default function ProductDetailContainer() {
+
+export default function ProductDetailContainer  ({id}) {
 
     const [item, setItem] = useState(null)
+
+    
+
+
     console.log(item)
+
+
     useEffect(()=>{
-        getItemsById(1)
+        getItemsById(id)
+        console.log(id)
             .then((data) => {
                 setItem(data)
             })
-            console.log(data)
-    },[])
+            
+    },[id])
 
     
   return (
