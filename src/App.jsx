@@ -1,4 +1,5 @@
 import "./App.css";
+import Banner from "./Components/Banner/Banner";
 import Header from "./Components/Header/Header";
 import ProductDetail from "./Components/ProductDetail/ProductDetail";
 import ProductsContainer from "./Components/ProductsContainer/ProductsContainer";
@@ -12,10 +13,12 @@ function App() {
     <>
       <BrowserRouter>
         <Header />
+       
         <Routes>
           <Route path="/" element={<ProductsContainer />} />
+          
           <Route path="/products/:categoryId" element={<ProductsContainer />} />
-          <Route path="/detail/:productId" element={<ProductDetail/>}/>
+          <Route path="/detail/:productId" element={<ProductDetail />}/>
         </Routes>
       </BrowserRouter>
     </>

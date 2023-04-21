@@ -1,38 +1,47 @@
-import React, { useEffect, useState } from 'react'
-import { getItemsById } from '../../Helpers/getDatos'
-import ProductDetail from '../ProductDetail/ProductDetail'
+import { useEffect, useState } from "react";
+import { getItemById } from "../../Helpers/getDatos";
+import ProductDetail from "../ProductDetail/ProductDetail";
+
+const ProductDetailContainer = ({ productId }) => {
+
+  const [product, setProduct] = useState(null);
 
 
+  useEffect(() => {
 
+    getItemById(productId).then((data) => {
 
-export default function ProductDetailContainer  ({id}) {
+      console.log({ data })
+      setProduct(data);
+    });
 
-    const [item, setItem] = useState(null)
+  }, [productId]);
 
-    
-
-
-    console.log(item)
-
-
-    useEffect(()=>{
-        getItemsById(id)
-        console.log(id)
-            .then((data) => {
-                setItem(data)
-            })
-            
-    },[id])
-
-    
   return (
     <>
       <div className="">
-        {
-          item && <ProductDetail {...item}/>
-          
-        }
+        {product && (
+          <>
+            <>
+              <div className="">
+                <div className="">
+                  <img src={product.image} alt="" />
+                </div>
+                <div className="">
+                  <p className="">{product.name}</p>
+                </div>
+                <div className="">
+                  <p>{product.price}</p>
+                </div>
+                <div className="">
+                  <p>{product.description}</p>
+                </div>
+              </div>
+            </>
+          </>
+        )}
       </div>
     </>
-  )
-}
+  );
+};
+export default ProductDetailContainer;

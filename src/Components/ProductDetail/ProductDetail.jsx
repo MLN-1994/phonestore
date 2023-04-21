@@ -1,28 +1,13 @@
-import React from 'react'
+import { useParams } from "react-router-dom"
+import ProductDetailContainer from "../ProductDetailContainer/ProductDetailContainer"
 
-const ProductDetail =({id, name, image, description, price, stock, category}) => {
-    
-  return (
-    <>
-        <div className="">
-          <div className="">hola</div>
-            <div className="">
-                <img src={image} alt="" />
-            </div>
 
-            <div className="">
-               <p className="">{name}</p>
-            </div>
+const ProductDetail = () =>{
 
-            <div className="">
-               <p className="">${price}</p>
-            </div>
-
-            <div className="">
-                <p className="">{description}</p>
-            </div>
-        </div>
-    </>
-  )
+  const { productId } = useParams();
+ 
+  return <>
+    <ProductDetailContainer productId={+productId}/>
+  </>
 }
 export default ProductDetail
