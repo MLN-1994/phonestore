@@ -15,7 +15,7 @@ export default function LinksToCategories() {
         <nav className="flex gap-2 md:gap-6 text-white font-bold">
        
           <Link
-            className={activeLink === 0 ? "border-b-2  border-gray-400  " : ""}
+            className={activeLink === 0 ? "border-b-2  border-gray-400  " : " "}
             onClick={() => handleLinkClick(0)}
             to="/products/phones"
           >

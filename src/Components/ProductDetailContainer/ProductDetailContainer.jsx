@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getItemById } from "../../Helpers/getDatos";
 import ProductDetail from "../ProductDetail/ProductDetail";
+import { SiMercadopago } from "react-icons/si";
+import {BsCash} from "react-icons/bs"
 
 const ProductDetailContainer = ({ productId }) => {
   const [product, setProduct] = useState(null);
@@ -41,6 +43,13 @@ const ProductDetailContainer = ({ productId }) => {
                         <p className="font-semibold">{product.description}</p>
                       </div>
                       <hr />
+                      <div className="">
+                        <div className=""><p>Formas de pago:</p></div>
+                        <div className="flex gap-2 mb-6 mt-2">
+                          <SiMercadopago className="text-4xl"/>
+                          <BsCash className="text-4xl"/>
+                          </div>
+                      </div>
                       <div className="">
                         <button className="bg-gray-800 hover:bg-gray-700 p-2 rounded-md shadow hover:shadow-lg font-semibold text-lg  text-white flex justify-center w-full ">
                           Comprar
