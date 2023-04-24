@@ -20,10 +20,13 @@ const ProductDetailContainer = ({ productId }) => {
         {product && (
           <>
             <>
-              <div className="flex items-center justify-center">
+              <div className="flex items-center justify-center ">
                 <div className="bg-white md:flex border m-10 shadow-md rounded-md">
-                  <div className="md:w-2/3 flex justify-center">
-                    <img src={product.image} alt="" />
+                  <div className="md:w-2/3 flex justify-center ">
+                    <div className="">
+                      <img className="w-96" src={product.image} alt="" />
+                      </div>
+                    
                   </div>
                   <div className=" md:w-1/3 my-6 mx-6 rounded-md border shadow-md">
                     <div className="p-2">

@@ -12,7 +12,7 @@ const ProductList = ({ products, category }) => {
               <div className="">
                 <div className="flex justify-center w-full my-2">
                   <img
-                    className="w-64 h-60 object-cover"
+                    className="w-64 h-60 object-cover hover:scale-150  "
                     src={product.image}
                     alt=""
                   />
