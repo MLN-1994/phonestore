@@ -8,7 +8,7 @@ const ProductList = ({ products, category }) => {
       <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4 ">
         {products.map((product) => (
           <div key={product.id} className="">
-            <div className="border bg-gray-50 p-4 my-2 mx-6 shadow rounded-md ">
+            <div className="border bg-gray-50 p-4 my-2 mx-6 shadow rounded-md hover:shadow-2xl">
               <div className="">
                 <div className="flex justify-center w-full my-2">
                   <img
