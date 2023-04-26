@@ -12,31 +12,32 @@ export default function LinksToCategories() {
   return (
     <>
       <div className="">
-        <nav className="flex gap-2 md:gap-6 text-white font-bold">
-       
+        <nav className="flex gap-2 md:gap-6 text-white font-bold text-lg md:text-xl">
+        
           <Link
-            className={activeLink === 0 ? "border-b-2  border-gray-400  " : " "}
+            className={activeLink === 0 ? "border-b-2  border-white  " : " "}
             onClick={() => handleLinkClick(0)}
             to="/products/phones"
           >
             Celulares
           </Link>
+
           <Link
-            className={activeLink === 1 ? "border-b-2  border-gray-400   " : ""}
+            className={activeLink === 1 ? "border-b-2  border-white   " : ""}
             onClick={() => handleLinkClick(1)}
             to="/products/cargadores"
           >
             Cargadores
           </Link>
           <Link
-            className={activeLink === 2 ? "border-b-2  border-gray-400   " : ""}
+            className={activeLink === 2 ? "border-b-2  border-white  " : ""}
             onClick={() => handleLinkClick(2)}
             to="/products/fundas"
           >
             Fundas
           </Link>
           <Link
-            className={activeLink === 3 ? "border-b-2  border-gray-400    " : ""}
+            className={activeLink === 3 ? "border-b-2  border-white  " : ""}
             onClick={() => handleLinkClick(3)}
             to="/products/otros"
           >

@@ -1,9 +1,11 @@
 import "./App.css";
 import Banner from "./Components/Banner/Banner";
 import Header from "./Components/Header/Header";
+
 import ProductDetail from "./Components/ProductDetail/ProductDetail";
 import ProductsContainer from "./Components/ProductsContainer/ProductsContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SubHeader from "./Components/SubHeader/SubHeader";
 
 function App() {
 
@@ -13,7 +15,8 @@ function App() {
     <>
       <BrowserRouter>
         <Header />
-       
+        <SubHeader/>
+       {/* <Banner/> */}
         <Routes>
           <Route path="/" element={<ProductsContainer />} />
           

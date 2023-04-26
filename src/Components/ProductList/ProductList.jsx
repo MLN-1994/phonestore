@@ -30,7 +30,7 @@ const ProductList = ({ products, category }) => {
                 </div>
               </div>
               <div className="my-4 p-2">
-                <Link to={`/detail/${product.id}`} className="bg-gray-800 hover:bg-gray-700 p-2 rounded-md shadow hover:shadow-lg font-semibold text-lg  text-white flex justify-center w-full ">
+                <Link to={`/detail/${product.id}`} className="bg-gray-900 p-2 rounded-md shadow hover:shadow-lg font-semibold text-lg  text-white flex justify-center w-full ">
                   Ver mas
                 </Link>
               </div>
