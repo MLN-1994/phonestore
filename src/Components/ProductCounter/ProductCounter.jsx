@@ -18,11 +18,11 @@ const ProductCounter = () => {
   return (
     <div className="grid grid-cols-3 items-center justify-center  ">
       <div className="flex justify-center">
-        <button
-          className="border  text-white p-2 rounded-md font-bold w-10 shadow-md  bg-gray-800 hover:bg-gray-700"
-          onClick={handleIncrement}
+      <button
+          className="border text-white p-2 rounded-md font-bold w-10 shadow-md  bg-gray-800 hover:bg-gray-700"
+          onClick={handleDecrement}
         >
-          +
+          -
         </button>
       </div>
       <div className="flex justify-center">
@@ -30,10 +30,10 @@ const ProductCounter = () => {
       </div>
       <div className="flex justify-center">
         <button
-          className="border text-white p-2 rounded-md font-bold w-10 shadow-md  bg-gray-800 hover:bg-gray-700"
-          onClick={handleDecrement}
+          className="border  text-white p-2 rounded-md font-bold w-10 shadow-md  bg-gray-800 hover:bg-gray-700"
+          onClick={handleIncrement}
         >
-          -
+          +
         </button>
       </div>
     </div>

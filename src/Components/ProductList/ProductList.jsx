@@ -5,14 +5,15 @@ import { Link } from "react-router-dom";
 const ProductList = ({ products, category }) => {
   return (
     <>
-      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4 ">
+    <div className="p-4 mx-6">
+    <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 ">
         {products.map((product) => (
           <div key={product.id} className="">
-            <div className="border bg-gray-50 p-4 my-2 mx-6 shadow rounded-md hover:shadow-2xl">
+            <div className="border bg-gray-50 p-2 shadow rounded-md hover:shadow-2xl ">
               <div className="">
-                <div className="flex justify-center w-full my-2">
+                <div className="flex justify-center  p-2 ">
                   <img
-                    className="w-64 h-60 object-cover hover:scale-[1.15] duration-500 ease-in-out hover:transition-all "
+                    className="w-52 h-52 object-cover hover:scale-[1.15] duration-500 ease-in-out hover:transition-all "
                     src={product.image}
                     alt=""
                   />
@@ -38,6 +39,9 @@ const ProductList = ({ products, category }) => {
           </div>
         ))}
       </div>
+
+    </div>
+    
     </>
   );
 };
