@@ -4,9 +4,9 @@ const SubHeader = () =>{
 
     return(
         <>
-            <div className="bg-gradient-to-r from-black  to-gray-100  p-4 flex justify-center items-center ">
+            <div className="  p-4 flex justify-center items-center ">
              <div className="">
-                 <LinksToCategories />
+                 <LinksToCategories className=""/>
               </div>
             </div>
         </>
