@@ -24,17 +24,20 @@ const ProductDetailContainer = ({ productId }) => {
               <div className="flex items-center justify-center ">
                 <div className="bg-white md:flex m-10 shadow-md rounded-md hover:shadow-2xl">
                   <div className="md:w-2/3 flex justify-center ">
-                      <div className="h-28  p-4 my-4  lg:absolute">
-                        <button className="text-3xl  lg:relative right-60 top-40 text-gray-400">&lt;</button>
-                      </div>
-                    
-                    <div className="">
-                      <img className="w-96" src={product.image} alt="" />
+                    <div className="h-28  p-4 my-4  lg:absolute">
+                      <button className="text-3xl  lg:relative right-60 top-40 text-gray-400">
+                        &lt;
+                      </button>
+                    </div>
+
+                    <div className="flex items-center">
+                      <img className="w-96 " src={product.image} alt="" />
                     </div>
                     <div className="h-28 p-4 my-4 lg:absolute">
-                    <button className="text-3xl  lg:relative left-60 top-40 text-gray-400">&gt;</button>
+                      <button className="text-3xl  lg:relative left-60 top-40 text-gray-400">
+                        &gt;
+                      </button>
                     </div>
-                    
                   </div>
 
                   <div className=" md:w-1/3 my-6 mx-6 rounded-md border shadow-md">
@@ -54,7 +57,9 @@ const ProductDetailContainer = ({ productId }) => {
                       <div className="my-6">
                         <p className="">{product.description}</p>
                       </div>
+
                       <hr />
+                      
                       <div className="">
                         <div className="">
                           <p>Formas de pago:</p>
