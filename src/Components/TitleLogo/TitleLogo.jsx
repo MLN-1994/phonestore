@@ -5,7 +5,7 @@ const TitleLogo = () => {
   return (
     <>
       <Link to={"/"} className="">
-        <img src={Logo} alt=""  className="w-24"/>
+        <img src={Logo} alt=""  className="w-24 hover:shadow-xl rounded-full "/>
       </Link>
     </>
   );
