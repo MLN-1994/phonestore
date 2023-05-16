@@ -52,7 +52,7 @@ const ProductDetailContainer = ({ productId }) => {
                         <p className="font-semibold">${product.price}</p>
                       </div>
                       <div className="">
-                        <p className="font-semibold">Stock: {product.stock}</p>
+                        <p className="text-sm font-thin">Stock: {product.stock}</p>
                       </div>
                       <div className="my-6">
                         <p className="">{product.description}</p>
@@ -60,7 +60,7 @@ const ProductDetailContainer = ({ productId }) => {
 
                       <hr />
                       
-                      <div className="">
+                      {/* <div className="">
                         <div className="">
                           <p>Formas de pago:</p>
                         </div>
@@ -68,10 +68,11 @@ const ProductDetailContainer = ({ productId }) => {
                           <SiMercadopago className="text-4xl" />
                           <BsCash className="text-4xl" />
                         </div>
+                      </div> */}
+                      <div className="my-4">
+                        <ProductCounter max={product.stock}/>
                       </div>
-                      <div className="">
-                        <ProductCounter />
-                      </div>
+                      
                     </div>
                   </div>
                 </div>

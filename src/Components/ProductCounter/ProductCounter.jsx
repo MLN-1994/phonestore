@@ -1,10 +1,14 @@
 import { useState } from "react";
 
-const ProductCounter = () => {
+//MINUTO 40:49
+
+
+
+const ProductCounter = ({max}) => {
   const [count, setCount] = useState(1);
 
   function handleIncrement() {
-    setCount(count + 1);
+   count < max && setCount(count + 1);
   }
 
   function handleDecrement() {
