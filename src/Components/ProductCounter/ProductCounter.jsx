@@ -1,17 +1,17 @@
 import { useState } from "react";
 
 const ProductCounter = () => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
 
   function handleIncrement() {
     setCount(count + 1);
   }
 
   function handleDecrement() {
-    if (count > 0) {
+    if (count > 1) {
       setCount(count - 1);
     } else {
-      setCount(0);
+      setCount(1);
     }
   }
 
