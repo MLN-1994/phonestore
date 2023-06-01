@@ -5,6 +5,8 @@ import ProductDetailContainer from "../ProductDetailContainer/ProductDetailConta
 const ProductDetail = () =>{
 
   const { productId } = useParams();
+
+  console.log({ productId })
  
   return <>
     <ProductDetailContainer productId={+productId}/>

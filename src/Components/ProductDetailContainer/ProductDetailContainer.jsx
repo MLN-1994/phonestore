@@ -5,10 +5,13 @@ import { SiMercadopago } from "react-icons/si";
 import { BsCash } from "react-icons/bs";
 import ProductCounter from "../ProductCounter/ProductCounter";
 import { useProduct } from "../../contexts/product.context";
+import { useCart } from "../../contexts/cart.context";
 
 const ProductDetailContainer = ({ productId }) => {
-  
-  const { getItemById } = useProduct();
+
+  const { getItemById, products } = useProduct();
+
+  const { addItem } = useCart();
 
   const [product, setProduct] = useState(null);
 
@@ -17,9 +20,11 @@ const ProductDetailContainer = ({ productId }) => {
 
     const item = getItemById(productId);
 
+    console.log(item)
+
     setProduct(item);
 
-  }, [productId]);
+  }, [products]);
 
   return (
     <>
@@ -61,7 +66,7 @@ const ProductDetailContainer = ({ productId }) => {
                         <ProductCounter max={product.stock} />
                       </div>
                       <div className="flex justify-center mt-10">
-                        <button className="border text-white rounded-md font-bold shadow-md p-2 w-full bg-gray-800 hover:bg-gray-700">
+                        <button onClick={ () => { addItem(product) } } className="border text-white rounded-md font-bold shadow-md p-2 w-full bg-gray-800 hover:bg-gray-700">
                           Agregar a carrito
                         </button>
                       </div>

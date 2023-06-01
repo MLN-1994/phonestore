@@ -12,8 +12,8 @@ function App() {
   //1:24 hs rrdom
   return (
     <>
-      <ProvideProduct>
-        <ProvideCart>
+      <ProvideCart>
+        <ProvideProduct>
           <BrowserRouter>
             <Header />
             <SubHeader />
@@ -27,8 +27,8 @@ function App() {
               <Route path="/detail/:productId" element={<ProductDetail />} />
             </Routes>
           </BrowserRouter>
-        </ProvideCart>
-      </ProvideProduct>
+        </ProvideProduct>
+      </ProvideCart>
     </>
   );
 }
