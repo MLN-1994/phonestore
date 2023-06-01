@@ -40,6 +40,7 @@ const ProductCounter = ({max}) => {
           +
         </button>
       </div>
+      
     </div>
   );
 };

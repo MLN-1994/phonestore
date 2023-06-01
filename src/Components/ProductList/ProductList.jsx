@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const ProductList = ({ products, category }) => {
   return (
     <>
-    <div className="p-4 mx-6">
+    <div className="py-12  w-3/4 mx-auto ">
     <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-2 ">
         {products.map((product) => (
           <div key={product.id} className="">

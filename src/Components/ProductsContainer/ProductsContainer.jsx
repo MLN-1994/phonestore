@@ -2,35 +2,20 @@ import { useEffect, useState } from "react";
 import getDatos from "../../Helpers/getDatos";
 import ProductList from "../ProductList/ProductList";
 import { useParams } from "react-router-dom";
+import { useProduct } from "../../contexts/product.context";
 
 function ProductsContainer() {
-  const [products, setProducts] = useState([]);
 
+  const { products, getProductsByCategory } = useProduct();
 
+  const { categoryId } = useParams();
 
-  const {categoryId} = useParams()
-  console.log(categoryId)
-
-  
-
-  useEffect(() => {
-    getDatos()
-      .then((res) => {
-        if(categoryId){
-          setProducts(res.filter(prod => prod.category === categoryId));
-        }else{
-          setProducts(res)
-        }
-      
-      
-    });
-  }, [categoryId]);
-
-  
+  const productsList = categoryId ? getProductsByCategory(categoryId) : products;
+ 
 
   return (
     <>  
-      <ProductList products={products}/>
+      <ProductList products={productsList}/>
     </>
   );
 }
