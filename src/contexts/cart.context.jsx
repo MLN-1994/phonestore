@@ -29,14 +29,10 @@ function useProvideCart() {
 
     const checkout = () => {
      
-      
-      
         let message = "¡Hola! Quisiera hacer el siguiente pedido: \n\n";
       
         cart.forEach(product => {
-          const encodedName = encodeURIComponent(product.name);
-          const encodedQuantity = encodeURIComponent("1"); // Aquí puedes agregar la cantidad deseada
-          message += `*${encodedName}* x${encodedQuantity} \n`;
+          message += `*${product.name}* x${product.amount} \n`;
         });
 
         message += "\n";

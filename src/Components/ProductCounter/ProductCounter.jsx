@@ -4,18 +4,18 @@ import { useState } from "react";
 
 
 
-const ProductCounter = ({max}) => {
-  const [count, setCount] = useState(1);
+const ProductCounter = ({max, amount, setAmount}) => {
+  
 
   function handleIncrement() {
-   count < max && setCount(count + 1);
+    amount < max && setAmount(amount + 1);
   }
 
   function handleDecrement() {
-    if (count > 1) {
-      setCount(count - 1);
+    if (amount > 1) {
+      setAmount(amount - 1);
     } else {
-      setCount(1);
+      setAmount(1);
     }
   }
 
@@ -30,7 +30,7 @@ const ProductCounter = ({max}) => {
         </button>
       </div>
       <div className="flex justify-center">
-        <div className="font-medium text-xl p-2 ">{count}</div>
+        <div className="font-medium text-xl p-2 ">{amount}</div>
       </div>
       <div className="flex justify-center">
         <button
