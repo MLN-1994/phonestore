@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SubHeader from "./Components/SubHeader/SubHeader";
 import { ProvideCart } from "./contexts/cart.context";
 import { ProvideProduct } from "./contexts/product.context";
+import Cart from "./Components/Cart/Cart"
 
 function App() {
   //1:24 hs rrdom
@@ -25,6 +26,7 @@ function App() {
                 element={<ProductsContainer />}
               />
               <Route path="/detail/:productId" element={<ProductDetail />} />
+              <Route path="/cart" element={<Cart/>}/>
             </Routes>
           </BrowserRouter>
         </ProvideProduct>

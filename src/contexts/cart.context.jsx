@@ -26,7 +26,7 @@ function useProvideCart() {
         ])
 
     }
-
+//chekout wsp
     const checkout = () => {
      
         let message = "¡Hola! Quisiera hacer el siguiente pedido: \n\n";
