@@ -2,7 +2,21 @@ import React from "react";
 import { useCart } from "../../contexts/cart.context";
 
 export default function Cart() {
-  const { cart, checkout } = useCart();
+  const { cart, checkout, removeItem } = useCart();
+
+
+  if (cart.length === 0) {
+    return (
+      <>
+        <div className="">
+        
+        </div>
+        <div className="flex justify-center">
+          <p className="text-6xl font-bold  my-32">📣 Carrito vacio</p>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -18,10 +32,13 @@ export default function Cart() {
         <p className="text-gray-600 mb-4">${product.price}</p>
         <div className="flex items-center justify-between">
           <p className="text-gray-600">Cantidad: {product.amount}</p>
-          <button className="px-4 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-700 transition-colors">
+          <button 
+          onClick={() => removeItem(product.id)}
+          className="px-4 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-700 transition-colors">
             Eliminar
           </button>
         </div>
+        
       </div>
     ))}
   </div>

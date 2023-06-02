@@ -17,6 +17,15 @@ export const useCart = () => {
 function useProvideCart() {
 
     const [cart, setCart] = useState([]);
+
+
+    const removeItem = (id) => {
+        setCart(cart.filter((item) => item.id !== id));
+      };
+
+      const totalPriceCart = () => {
+        return cart.reduce((acc, item) => acc + item.price * item.productCount, 0);
+      };
     
     const addItem = (item) => {
         
@@ -53,7 +62,9 @@ function useProvideCart() {
     return {
         cart,
         addItem,
-        checkout
+        checkout,
+        removeItem,
+        totalPriceCart
     }
         
     
