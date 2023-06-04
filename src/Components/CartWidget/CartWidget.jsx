@@ -20,12 +20,12 @@ export default function CartWidget() {
     <>
       <div className="text-4xl flex items-center justify-center">
         <div  className="relative flex items-center">
-          <div className="absolute top-0 right-0 -mt-2 -mr-4 font-semibold text-sm bg-zinc-600 text-white w-6 h-6 flex items-center justify-center rounded-full">
+          <div className="absolute top-0 right-0 -mt-2 -mr-4 font-semibold text-sm bg-multi-color text-white w-6 h-6 flex items-center justify-center rounded-full">
             {totalProducts() || 0}
           </div>
           <div className="text-zinc-600">
             <Link to={"/cart"}>
-               <AiOutlineShoppingCart />
+               <AiOutlineShoppingCart className="text-black-500"/>
             </Link>
             
           </div>

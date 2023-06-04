@@ -1,44 +1,52 @@
 import React from "react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function LinksToCategories() {
-  const [activeLink, setActiveLink] = useState(null);
-
-  const handleLinkClick = (index) => {
-    setActiveLink(index);
-  };
+  const location = useLocation();
 
   return (
     <>
       <div className="">
-        <nav className="flex gap-2 md:gap-6 font-sans font-bold text-lg md:text-xl">
-        
+        <nav className="flex gap-2 md:gap-6 font-sans font-bold text-xl text-zinc-500 ">
           <Link
-            className={activeLink === 0 ? "border-b-2  border-gray-500  " : " "}
-            onClick={() => handleLinkClick(0)}
+            className={`${
+              location.pathname === "/products/phones"
+                ? "bg-gradient-to-br text-transparent bg-clip-text from-blue-500 to-purple-700"
+                : ""
+            }`}
             to="/products/phones"
           >
             Celulares
           </Link>
 
           <Link
-            className={activeLink === 1 ? "border-b-2  border-gray-500   " : ""}
-            onClick={() => handleLinkClick(1)}
+            className={`${
+              location.pathname === "/products/cargadores"
+                ? "bg-gradient-to-br text-transparent bg-clip-text from-blue-500 to-purple-700"
+                : ""
+            }`}
             to="/products/cargadores"
           >
             Cargadores
           </Link>
+
           <Link
-            className={activeLink === 2 ? "border-b-2  border-gray-500  " : ""}
-            onClick={() => handleLinkClick(2)}
+            className={`${
+              location.pathname === "/products/fundas"
+                ? "bg-gradient-to-br text-transparent bg-clip-text from-blue-500 to-purple-700"
+                : ""
+            }`}
             to="/products/fundas"
           >
             Fundas
           </Link>
+
           <Link
-            className={activeLink === 3 ? "border-b-2  border-gray-500  " : ""}
-            onClick={() => handleLinkClick(3)}
+            className={`${
+              location.pathname === "/products/otros"
+                ? "bg-gradient-to-br text-transparent bg-clip-text from-blue-500 to-purple-700"
+                : ""
+            }`}
             to="/products/otros"
           >
             Otros
