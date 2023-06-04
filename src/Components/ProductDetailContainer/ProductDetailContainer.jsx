@@ -35,15 +35,15 @@ const ProductDetailContainer = ({ productId }) => {
 
   return (
     <>
-      <div className="w-3/4 mx-auto items-center flex justify-center">
+      <div className="md:w-3/4 mx-auto items-center flex justify-center">
         {product && (
           <>
             <>
-              <div className="flex items-center justify-center ">
+              <div className="">
                 <div className="bg-white md:flex m-10 shadow-md rounded-md hover:shadow-2xl">
-                  <div className="md:w-2/3 flex justify-center ">
+                  <div className="w-2/3 mx-auto flex justify-center ">
                     <div className="flex items-center">
-                      <img className="w-96 " src={product.image} alt="" />
+                      <img className=" " src={product.image} alt="" />
                     </div>
                   </div>
 
