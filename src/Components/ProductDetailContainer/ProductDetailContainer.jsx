@@ -1,8 +1,4 @@
 import { useEffect, useState } from "react";
-import { getItemById } from "../../Helpers/getDatos";
-import ProductDetail from "../ProductDetail/ProductDetail";
-import { SiMercadopago } from "react-icons/si";
-import { BsCash } from "react-icons/bs";
 import ProductCounter from "../ProductCounter/ProductCounter";
 import { useProduct } from "../../contexts/product.context";
 import { useCart } from "../../contexts/cart.context";

@@ -4,8 +4,8 @@ const Banner = () =>{
 
 return(
     <>
-    <div className="">
-        <video className=" rounded  shadow-sm" src={videoBanner} autoPlay loop muted/>
+    <div className="flex justify-center w-full  mt-16">
+        <video className=" rounded  " src={videoBanner} autoPlay loop muted/>
     </div>
        
     </>

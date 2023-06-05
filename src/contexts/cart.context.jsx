@@ -19,6 +19,8 @@ function useProvideCart() {
     const [cart, setCart] = useState([]);
 
 
+  
+
     const removeItem = (id) => {
         setCart(cart.filter((item) => item.id !== id));
       };
@@ -64,7 +66,8 @@ function useProvideCart() {
         addItem,
         checkout,
         removeItem,
-        totalPriceCart
+        totalPriceCart, 
+        
     }
         
     

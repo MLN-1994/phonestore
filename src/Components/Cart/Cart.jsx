@@ -47,7 +47,7 @@ export default function Cart() {
   </div>
 
  <div className="w-3/4 mx-auto py-8">
-  
+        
         <button
           className="py-4 w-1/2 mx-auto bg-multi-color  rounded-md shadow hover:shadow-lg font-semibold text-lg  text-white flex justify-center  "
           onClick={() => checkout()}

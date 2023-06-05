@@ -8,6 +8,10 @@ const ProductList = ({ products, category }) => {
         <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 px-2 gap-4 ">
           {products.map((product) => (
             <div key={product.id} className="">
+
+                
+
+
               <div className="border bg-white p-2 shadow rounded-xl hover:shadow-2xl ">
                 <div className="">
                   <div className="flex justify-center  p-2 ">
