@@ -2,31 +2,26 @@ import { useEffect, useState } from "react";
 import ProductCounter from "../ProductCounter/ProductCounter";
 import { useProduct } from "../../contexts/product.context";
 import { useCart } from "../../contexts/cart.context";
+import { Link } from "react-router-dom";
 
 const ProductDetailContainer = ({ productId }) => {
-
   const { getItemById, products } = useProduct();
-  const { addItem } = useCart();
-
+  const { addItem, isIncart } = useCart();
+  console.log(isIncart(productId));
   const [product, setProduct] = useState(null);
   const [amount, setAmount] = useState(1);
 
-  const addCartItem = (item) =>{
-
+  const addCartItem = (item) => {
     item.amount = amount;
     addItem(item);
-
-  }
-
+  };
 
   useEffect(() => {
-
     const item = getItemById(productId);
 
-    console.log(item)
+    console.log(item);
 
     setProduct(item);
-
   }, [products]);
 
   return (
@@ -65,17 +60,34 @@ const ProductDetailContainer = ({ productId }) => {
 
                       <hr />
 
-                      <div className="mt-6 border rounded-md p-2">
-                        <ProductCounter 
-                          max={product.stock} 
-                          amount={amount}
-                          setAmount={setAmount}
-                        
-                        />
-
+                      <div className=" rounded-md my-4">
+                        {!isIncart(productId) ? (
+                          <ProductCounter
+                            max={product.stock}
+                            amount={amount}
+                            setAmount={setAmount}
+                          />
+                        ) : (
+                          <div className="flex justify-center mt-12">
+                            <Link className=" " to="/cart">
+                              <button className="text-white rounded-md font-bold shadow-md py-2 px-4 w-full bg-multi-color ">
+                                Finalizar compra
+                              </button>
+                            </Link>
+                          </div>
+                        )}
                       </div>
-                      <div className="flex justify-center mt-10">
-                        <button onClick={ () => { addCartItem(product) } } className="border text-white rounded-md font-bold shadow-md p-2 w-full bg-multi-color">
+                      <div
+                        className={`flex justify-center  ${
+                          isIncart(productId) ? "hidden" : ""
+                        }`}
+                      >
+                        <button
+                          onClick={() => {
+                            addCartItem(product);
+                          }}
+                          className=" text-white rounded-md font-bold shadow-md py-2 w-full px-4 bg-zinc-800 hover:bg-zinc-600"
+                        >
                           Agregar a carrito
                         </button>
                       </div>

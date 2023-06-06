@@ -19,14 +19,16 @@ function useProvideCart() {
     const [cart, setCart] = useState([]);
 
 
-  
+    const isIncart = (id) => {
+      return cart.some((item) => item.id === id);
+    };
 
     const removeItem = (id) => {
         setCart(cart.filter((item) => item.id !== id));
       };
 
       const totalPriceCart = () => {
-        return cart.reduce((acc, item) => acc + item.price * item.productCount, 0);
+        return cart.reduce((acc, item) => acc + item.price * item.amount, 0);
       };
     
     const addItem = (item) => {
@@ -67,6 +69,7 @@ function useProvideCart() {
         checkout,
         removeItem,
         totalPriceCart, 
+        isIncart
         
     }
         

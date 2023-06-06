@@ -23,7 +23,7 @@ const ProductList = ({ products, category }) => {
                   </div>
                   <div className="px-2 py-2 flex-grow ">
                     <div className="my-2">
-                      <p className="font-bold text-xl ">{product.name}</p>
+                      <p className="font-bold text-xl text-zinc-800">{product.name}</p>
                     </div>
 
                     <div className="my-2">

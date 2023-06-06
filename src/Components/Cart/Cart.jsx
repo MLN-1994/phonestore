@@ -3,15 +3,14 @@ import { FaTrash } from "react-icons/fa";
 import { useCart } from "../../contexts/cart.context";
 
 export default function Cart() {
-  const { cart, checkout, removeItem } = useCart();
+  const { cart, checkout, removeItem, totalPriceCart } = useCart();
 
+  console.log(totalPriceCart())
 
   if (cart.length === 0) {
     return (
       <>
-        <div className="">
         
-        </div>
         <div className="flex justify-center">
           <p className="text-6xl font-bold  my-32">📣 Carrito vacio</p>
         </div>
@@ -22,8 +21,10 @@ export default function Cart() {
   return (
     <>
    <div className="bg-white mx-auto w-3/4 py-6 my-32 rounded-lg shadow-lg px-16">
+
   <h2 className="text-3xl font-bold py-6">Tu pedido</h2>
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+  <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-6">
     {cart.map((product) => (
       <div className="border shadow-md rounded-lg p-4" key={product.id}>
         <div className="flex justify-center">
@@ -46,10 +47,14 @@ export default function Cart() {
     ))}
   </div>
 
- <div className="w-3/4 mx-auto py-8">
+
+  <div className="font-bold text-xl my-4 px-4">
+      Total: ${totalPriceCart()}
+  </div>
+ <div className="">
         
         <button
-          className="py-4 w-1/2 mx-auto bg-multi-color  rounded-md shadow hover:shadow-lg font-semibold text-lg  text-white flex justify-center  "
+          className=" md:px-16 md:py-4  mx-auto bg-multi-color  rounded-md shadow hover:shadow-lg font-semibold text-lg  text-white flex justify-center  "
           onClick={() => checkout()}
         >
           Hacer mi pedido
