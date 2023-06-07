@@ -14,10 +14,12 @@ const mockUser = [
 export const LoginContext = createContext();
 
 export const LoginProvider = ({ children }) => {
+  
   const [user, setUser] = useState({
     email: "",
     logged: false,
     error: null,
+    
   });
   console.log(user)
 
@@ -31,20 +33,15 @@ export const LoginProvider = ({ children }) => {
           email: match.email,
           logged: true,
           error: null,
+          
         })
       : setUser({
           email: null,
           logged: false,
           error: "Datos invalidos",
+         
         });
 
-    // if (match) {
-    //   setUser({
-    //     email: match.email,
-    //     logged: true,
-    //     error: null,
-    //   });
-    // }
   };
 
   const logout = () =>{

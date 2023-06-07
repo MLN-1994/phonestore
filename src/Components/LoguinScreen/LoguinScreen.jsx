@@ -1,9 +1,12 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LoginContext } from "../../contexts/login.context";
+import { useNavigate } from "react-router-dom";
 
 const LoguinScreen = () => {
 
-    const {login} = useContext(LoginContext)
+    const {login, user} = useContext(LoginContext)
+
+    const navigateToAdmin = useNavigate();
 
 
   const [values, setValues] = useState({
@@ -21,7 +24,14 @@ const LoguinScreen = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     login(values);
+   
+   
   };
+  useEffect(()=>{
+    if (user.logged){
+        navigateToAdmin("/admin") 
+    }
+  })
 
   return (
     <>

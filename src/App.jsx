@@ -10,9 +10,11 @@ import { ProvideCart } from "./contexts/cart.context";
 import { ProvideProduct } from "./contexts/product.context";
 import Cart from "./Components/Cart/Cart";
 import { LoginProvider } from "./contexts/login.context";
+import Admin from "./Components/Admin/Admin";
 
 function App() {
-  //1:24 hs rrdom
+ 
+
   return (
     <>
     <LoginProvider>
@@ -31,6 +33,10 @@ function App() {
               <Route path="/loguin" element={<LoguinScreen />} />
               <Route path="/detail/:productId" element={<ProductDetail />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/admin" element={<Admin/>}></Route>
+            </Routes>
+            <Routes>
+              
             </Routes>
           </BrowserRouter>
         </ProvideProduct>
