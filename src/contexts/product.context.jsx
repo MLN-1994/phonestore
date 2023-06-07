@@ -1,5 +1,6 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import dataproduct from "../Data/DataProducts.json";
+import { ProductApi } from "../config/endpoints";
 
 const productContext = createContext({});
 
@@ -19,10 +20,17 @@ export const useProduct = () => {
 
 function useProvideProduct() {
 
+
   const [products, setProducts] = useState([]);
 
-  const getProducts = () => {
-    setProducts(dataproduct);
+ 
+  const fetchProducts = async () => {
+    try {
+      const response = await ProductApi.getAll(); // Assuming your API endpoint is defined in ProductApi.js
+      setProducts(response.data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
   };
 
   const getItemById = (id) => {
@@ -42,7 +50,7 @@ function useProvideProduct() {
 
 
   useEffect(() => {
-    getProducts();
+    fetchProducts();
   }, []);
 
   return {
