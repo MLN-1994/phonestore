@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 const mockUser = [
   {
@@ -13,6 +13,8 @@ const mockUser = [
 
 export const LoginContext = createContext();
 
+
+
 export const LoginProvider = ({ children }) => {
   
   const [user, setUser] = useState({
@@ -25,23 +27,32 @@ export const LoginProvider = ({ children }) => {
 
   const login = (values) => {
     const match = mockUser.find(
-      (user) => user.email === values.email && user.password === values.password
-    );
+      (user) => user.email === values.email);
 
-    match
-      ? setUser({
+      if(!match){
+        setUser({
+          email: null,
+          logged: false,
+          error: "Usuario invalido",
+         
+        });
+        return
+      }
+      if(match.password === values.password){
+        setUser({
           email: match.email,
           logged: true,
           error: null,
-          
-        })
-      : setUser({
-          email: null,
-          logged: false,
-          error: "Datos invalidos",
          
         });
-
+      } else {
+        setUser({
+          email: null,
+          logged: false,
+          error: "password invalido",
+         
+        });
+      }
   };
 
   const logout = () =>{

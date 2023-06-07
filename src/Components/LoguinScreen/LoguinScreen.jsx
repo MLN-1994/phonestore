@@ -31,7 +31,7 @@ const LoguinScreen = () => {
     if (user.logged){
         navigateToAdmin("/admin") 
     }
-  })
+  },[user.logged, navigateToAdmin])
 
   return (
     <>
@@ -69,6 +69,7 @@ const LoguinScreen = () => {
             >
               Ingresar
             </button>
+            {user.error && <p className="text-red-500 text-lg font-semibold">{user.error} ⚠️</p>}
           </form>
         </div>
       </div>
