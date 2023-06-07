@@ -70,7 +70,7 @@ const ProductDetailContainer = ({ productId }) => {
                         ) : (
                           <div className="flex justify-center mt-12">
                             <Link className=" " to="/cart">
-                              <button className="text-white rounded-md font-bold shadow-md py-2 px-4 w-full bg-multi-color ">
+                              <button className=" rounded-md font-bold shadow-md py-2 px-4 w-full bg-white border border-sky-500 hover:bg-sky-500 text-sky-500 hover:text-white ">
                                 Finalizar compra
                               </button>
                             </Link>
@@ -86,7 +86,7 @@ const ProductDetailContainer = ({ productId }) => {
                           onClick={() => {
                             addCartItem(product);
                           }}
-                          className=" text-white rounded-md font-bold shadow-md py-2 w-full px-4 bg-zinc-800 hover:bg-zinc-600"
+                          className=" bg-white border border-sky-500 hover:bg-sky-500 text-sky-500 hover:text-white rounded-md font-bold shadow-md py-2 w-full px-4 "
                         >
                           Agregar a carrito
                         </button>

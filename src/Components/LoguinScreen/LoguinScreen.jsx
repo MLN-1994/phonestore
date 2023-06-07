@@ -69,7 +69,10 @@ const LoguinScreen = () => {
             >
               Ingresar
             </button>
+            <div className="flex justify-center">
             {user.error && <p className="text-red-500 text-lg font-semibold">{user.error} ⚠️</p>}
+            </div>
+           
           </form>
         </div>
       </div>
