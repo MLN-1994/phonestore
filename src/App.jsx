@@ -1,5 +1,6 @@
 import "./App.css";
 import Banner from "./Components/Banner/Banner";
+import LoguinScreen from "./Components/LoguinScreen/LoguinScreen"
 import Header from "./Components/Header/Header";
 import ProductDetail from "./Components/ProductDetail/ProductDetail";
 import ProductsContainer from "./Components/ProductsContainer/ProductsContainer";
@@ -25,6 +26,7 @@ function App() {
                 path="/products/:categoryId"
                 element={<ProductsContainer />}
               />
+              <Route path="/loguin" element={<LoguinScreen />} />
               <Route path="/detail/:productId" element={<ProductDetail />} />
               <Route path="/cart" element={<Cart />} />
             </Routes>

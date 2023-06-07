@@ -30,7 +30,7 @@ const ProductDetailContainer = ({ productId }) => {
         {product && (
           <>
             <>
-              <div className="">
+              <div className="md:my-16">
                 <div className="bg-white md:flex m-10 shadow-md rounded-md hover:shadow-2xl">
                   <div className="w-2/3 mx-auto flex justify-center ">
                     <div className="flex items-center">
@@ -38,7 +38,7 @@ const ProductDetailContainer = ({ productId }) => {
                     </div>
                   </div>
 
-                  <div className=" md:w-1/3 my-6 mx-6 rounded-md border shadow-md">
+                  <div className="my-12 mx-4 rounded-md border shadow-md">
                     <div className="p-2">
                       <div className="">
                         <p className="font-bold text-3xl my-6">
