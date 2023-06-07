@@ -1,6 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { LoginContext } from "../../contexts/login.context";
 
 const LoguinScreen = () => {
+
+    const {login} = useContext(LoginContext)
+
+
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -9,13 +14,13 @@ const LoguinScreen = () => {
   const handleInputChange = (e) => {
     setValues({
       ...values,
-      [e.target.name]: e.target.value.value,
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(values);
+    login(values);
   };
 
   return (

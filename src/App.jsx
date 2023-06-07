@@ -9,11 +9,13 @@ import SubHeader from "./Components/SubHeader/SubHeader";
 import { ProvideCart } from "./contexts/cart.context";
 import { ProvideProduct } from "./contexts/product.context";
 import Cart from "./Components/Cart/Cart";
+import { LoginProvider } from "./contexts/login.context";
 
 function App() {
   //1:24 hs rrdom
   return (
     <>
+    <LoginProvider>
       <ProvideCart>
         <ProvideProduct>
           <BrowserRouter>
@@ -33,6 +35,7 @@ function App() {
           </BrowserRouter>
         </ProvideProduct>
       </ProvideCart>
+      </LoginProvider>
     </>
   );
 }
