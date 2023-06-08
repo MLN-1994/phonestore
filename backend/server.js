@@ -16,9 +16,9 @@ app.use(
 
 //conexion base de datos
 const connection = mysql2.createConnection({
-    host: "localhost",
+    host: "23.92.18.234",
     user: "root",
-    password: "37846699a",
+    password: "37846699Langge",
     database: "phonestore",
   })
 
