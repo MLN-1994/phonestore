@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { ProductApi } from '../../config/endpoints';
+import React, { useState } from "react";
+import { ProductApi } from "../../config/endpoints";
 
 
 
 const AddProductForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    price: '',
-    image: '',
-    description: '',
-    category: '',
-    stock: ''
+    name: "",
+    price: "",
+    image: "",
+    description: "",
+    category: "",
+    stock: "",
   });
 
   const handleChange = (e) => {
@@ -21,16 +21,19 @@ const AddProductForm = () => {
     e.preventDefault();
     // Aquí puedes agregar la lógica para enviar los datos del formulario a tu servidor
 
-    {formData && ProductApi.insert(formData)
-      .then((response) => {
-        console.log('Item inserted successfully');
-        // Handle success response
-      })
-      .catch((error) => {
-        console.error('Failed to insert item:', error);
-        // Handle error response
-      });}
-    
+    {
+      formData &&
+        ProductApi.insert(formData)
+          .then((response) => {
+            console.log("Item inserted successfully");
+            // Handle success response
+          })
+          .catch((error) => {
+            console.error("Failed to insert item:", error);
+            // Handle error response
+          });
+    }
+
     console.log(formData);
   };
 
@@ -39,7 +42,10 @@ const AddProductForm = () => {
       <h2 className="text-2xl font-bold mb-4">Agregar Producto</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="name"
+          >
             Nombre
           </label>
           <input
@@ -54,7 +60,10 @@ const AddProductForm = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="price">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="price"
+          >
             Precio
           </label>
           <input
@@ -69,7 +78,10 @@ const AddProductForm = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="image">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="image"
+          >
             Imagen
           </label>
           <input
@@ -84,7 +96,10 @@ const AddProductForm = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="description"
+          >
             Descripción
           </label>
           <textarea
@@ -98,7 +113,10 @@ const AddProductForm = () => {
           ></textarea>
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="category">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="category"
+          >
             Categoría
           </label>
           <input
@@ -113,7 +131,10 @@ const AddProductForm = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="stock">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="stock"
+          >
             Stock
           </label>
           <input
@@ -133,8 +154,6 @@ const AddProductForm = () => {
         >
           Agregar
         </button>
-
-        <h1>{formData.name}</h1>
       </form>
     </div>
   );

@@ -1,9 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { LoginContext } from "../../contexts/login.context";
 import AddProductForm from "../AddProductForm/AddProductForm";
 
 export default function Admin() {
   const { user } = useContext(LoginContext);
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    const userToken = localStorage.getItem("token");
+
+    if (userToken) {
+      setToken(userToken);
+    }
+  }, [token]);
+
+  if (!token) {
+    // If token doesn't exist, don't render anything
+    return null;
+  }
 
   return (
     <>
@@ -15,8 +29,16 @@ export default function Admin() {
       </div>
 
       <div className="">
-        <AddProductForm/>
+        <AddProductForm />
       </div>
+
+      <button
+        onClick={() => {
+          localStorage.removeItem("token");
+        }}
+      >
+        Salir de la cuenta
+      </button>
     </>
   );
 }

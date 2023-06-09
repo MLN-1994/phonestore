@@ -1,4 +1,3 @@
-
 import axios from "axios";
 
 const api = axios.create({
@@ -24,7 +23,10 @@ api.interceptors.request.use(
 const ProductApi = {
   getAll: () => api.get(`/products`),
   insert: (formData) => api.post(`/insert`, formData),
-  
 };
 
-export { ProductApi };
+const UserApi = {
+  login: (formData) => api.post(`/login`, formData),
+};
+
+export { ProductApi, UserApi };

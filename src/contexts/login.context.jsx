@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
-const adminUser = [
+const  mockUser = [
   {
     email: "mariano@gmail.com",
     password: "123",
@@ -13,55 +13,46 @@ const adminUser = [
 
 export const LoginContext = createContext();
 
-
-
 export const LoginProvider = ({ children }) => {
-  
   const [user, setUser] = useState({
     email: "",
     logged: false,
     error: null,
-    
   });
-  console.log(user)
 
   const login = (values) => {
-    const match = adminUser.find(
-      (user) => user.email === values.email);
+    const match = mockUser.find((user) => user.email === values.email);
 
-      if(!match){
-        setUser({
-          email: null,
-          logged: false,
-          error: "Usuario invalido",
-         
-        });
-        return
-      }
-      if(match.password === values.password){
-        setUser({
-          email: match.email,
-          logged: true,
-          error: null,
-         
-        });
-      } else {
-        setUser({
-          email: null,
-          logged: false,
-          error: "password invalido",
-         
-        });
-      }
+    if (!match) {
+      setUser({
+        email: null,
+        logged: false,
+        error: "Usuario invalido",
+      });
+      return;
+    }
+    if (match.password === values.password) {
+      setUser({
+        email: match.email,
+        logged: true,
+        error: null,
+      });
+    } else {
+      setUser({
+        email: null,
+        logged: false,
+        error: "password invalido",
+      });
+    }
   };
 
-  const logout = () =>{
+  const logout = () => {
     setUser({
-        email: "",
-        logged: false,
-        error: null,
-    })
-  }
+      email: "",
+      logged: false,
+      error: null,
+    });
+  };
 
   return (
     <LoginContext.Provider value={{ user, login, logout }}>
