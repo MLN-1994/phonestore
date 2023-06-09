@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { LoginContext } from "../../contexts/login.context";
+import AddProductForm from "../AddProductForm/AddProductForm";
 
 export default function Admin() {
   const { user } = useContext(LoginContext);
@@ -11,6 +12,10 @@ export default function Admin() {
           Bienvenido
           <span className="text-sky-500 text-2xl">{user.email}</span>
         </p>
+      </div>
+
+      <div className="">
+        <AddProductForm/>
       </div>
     </>
   );

@@ -23,7 +23,8 @@ api.interceptors.request.use(
 
 const ProductApi = {
   getAll: () => api.get(`/products`),
-  insert: (product) => api.post(`/products`),
+  insert: (formData) => api.post(`/insert`, formData),
+  
 };
 
 export { ProductApi };
