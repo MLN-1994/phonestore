@@ -1,6 +1,6 @@
 import "./App.css";
 import Banner from "./Components/Banner/Banner";
-import LoguinScreen from "./Components/LoguinScreen/LoguinScreen"
+import LoguinScreen from "./Components/LoguinScreen/LoguinScreen";
 import Header from "./Components/Header/Header";
 import ProductDetail from "./Components/ProductDetail/ProductDetail";
 import ProductsContainer from "./Components/ProductsContainer/ProductsContainer";
@@ -13,34 +13,30 @@ import { LoginProvider } from "./contexts/login.context";
 import Admin from "./Components/Admin/Admin";
 
 function App() {
- 
-
   return (
     <>
-    <LoginProvider>
-      <ProvideCart>
-        <ProvideProduct>
-          <BrowserRouter>
-            <Header />
-            <SubHeader />
-            {/* <Banner/> */}
-            <Routes>
-              <Route path="/" element={<ProductsContainer />} />
-              <Route
-                path="/products/:categoryId"
-                element={<ProductsContainer />}
-              />
-              <Route path="/loguin" element={<LoguinScreen />} />
-              <Route path="/detail/:productId" element={<ProductDetail />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/admin" element={<Admin/>}></Route>
-            </Routes>
-            <Routes>
-              
-            </Routes>
-          </BrowserRouter>
-        </ProvideProduct>
-      </ProvideCart>
+      <LoginProvider>
+        <ProvideCart>
+          <ProvideProduct>
+            <BrowserRouter>
+              <Header />
+              <SubHeader />
+              {/* <Banner/> */}
+              <Routes>
+                <Route path="/" element={<ProductsContainer />} />
+                <Route
+                  path="/products/:categoryId"
+                  element={<ProductsContainer />}
+                />
+                <Route path="/loguin" element={<LoguinScreen />} />
+                <Route path="/detail/:productId" element={<ProductDetail />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/admin" element={<Admin />}></Route>
+              </Routes>
+              <Routes></Routes>
+            </BrowserRouter>
+          </ProvideProduct>
+        </ProvideCart>
       </LoginProvider>
     </>
   );

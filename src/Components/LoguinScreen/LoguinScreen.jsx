@@ -1,16 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { LoginContext } from "../../contexts/login.context";
 import { useNavigate } from "react-router-dom";
+import { UserApi } from "../../config/endpoints";
 
 const LoguinScreen = () => {
+  const { login, user } = useContext(LoginContext);
 
-    const {login, user} = useContext(LoginContext)
-
-    const navigateToAdmin = useNavigate();
-
+  const navigateToAdmin = useNavigate();
 
   const [values, setValues] = useState({
-    email: "",
+    username: "",
     password: "",
   });
 
@@ -23,15 +22,31 @@ const LoguinScreen = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login(values);
-   
-   
+    // login(values);
+
+    const { username, password } = values;
+
+    UserApi.login({ username, password })
+      .then((response) => {
+        const { token } = response.data;
+        console.log("Login successful. Token:", token);
+        // Handle success response
+        // For example, you can store the token in local storage or set it as a cookie
+        localStorage.setItem("token", token);
+        navigateToAdmin("/admin");
+      })
+      .catch((error) => {
+        console.error("Failed to login:", error);
+        // Handle error response
+        // For example, you can display an error message to the user
+      });
   };
-  useEffect(()=>{
-    if (user.logged){
-        navigateToAdmin("/admin") 
+
+  useEffect(() => {
+    if (user.logged) {
+      navigateToAdmin("/admin");
     }
-  },[user.logged, navigateToAdmin])
+  }, [user.logged, navigateToAdmin]);
 
   return (
     <>
@@ -49,11 +64,11 @@ const LoguinScreen = () => {
           >
             <input
               className="px-12 py-4 bg-slate-100 shadow-md"
-              value={values.email}
-              type="email"
+              value={values.username}
+              type="username"
               onChange={handleInputChange}
-              name="email"
-              placeholder="Email"
+              name="username"
+              placeholder="Username"
             />
             <input
               className="px-12 py-4 bg-slate-100 shadow-md"
@@ -70,9 +85,12 @@ const LoguinScreen = () => {
               Ingresar
             </button>
             <div className="flex justify-center">
-            {user.error && <p className="text-red-500 text-lg font-semibold">{user.error} ⚠️</p>}
+              {user.error && (
+                <p className="text-red-500 text-lg font-semibold">
+                  {user.error} ⚠️
+                </p>
+              )}
             </div>
-           
           </form>
         </div>
       </div>
