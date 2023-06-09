@@ -54,7 +54,7 @@ export default function Cart() {
  <div className="">
         
         <button
-          className=" md:px-16 md:py-4  mx-auto bg-white border border-sky-500 hover:bg-sky-500 text-sky-500 hover:text-white rounded-md shadow hover:shadow-lg text-lg font-bold flex justify-center  "
+          className=" md:px-16 md:py-4 text-blue-600  mx-auto bg-white border border-blue-500 hover:bg-gradient-to-br from-blue-500 to-purple-700 hover:text-white rounded-md shadow hover:shadow-lg text-lg font-bold flex justify-center  "
           onClick={() => checkout()}
         >
           Hacer mi pedido

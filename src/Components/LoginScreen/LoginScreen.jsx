@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { LoginContext } from "../../contexts/login.context";
 import { useNavigate } from "react-router-dom";
 
-const LoguinScreen = () => {
+const LoginScreen = () => {
 
     const {login, user} = useContext(LoginContext)
 
@@ -35,20 +35,20 @@ const LoguinScreen = () => {
 
   return (
     <>
-      <div className="mx-auto w-2/3 my-32 bg-zinc-300 py-12 rounded-md shadow">
+      <div className="mx-auto w-2/3 my-16  ">
         <div className="flex justify-center">
-          <p className="text-3xl text-transparent bg-clip-text bg-gradient-to-br from-sky-500 to-sky-800 font-bold p-4 ">
+          <p className="text-3xl mb-6 text-transparent  bg-clip-text bg-gradient-to-br from-blue-500 to-purple-700 font-bold p-4 ">
             Login
           </p>
         </div>
 
-        <div className=" flex justify-center">
+        <div className=" flex justify-center ">
           <form
-            className="border flex flex-col gap-6  bg-white p-8 rounded-md shadow-md"
+            className="border flex flex-col   bg-white p-8 rounded-md shadow-md"
             action=""
           >
             <input
-              className="px-12 py-4 bg-slate-100 shadow-md"
+              className="px-12 py-4 my-4 bg-slate-100 shadow-md"
               value={values.email}
               type="email"
               onChange={handleInputChange}
@@ -56,7 +56,7 @@ const LoguinScreen = () => {
               placeholder="Email"
             />
             <input
-              className="px-12 py-4 bg-slate-100 shadow-md"
+              className="px-12 py-4 my-4 bg-slate-100 shadow-md"
               value={values.password}
               type="password"
               onChange={handleInputChange}
@@ -65,7 +65,7 @@ const LoguinScreen = () => {
             />
             <button
               onClick={handleSubmit}
-              className="font-bold border border-sky-500 hover:bg-sky-500 hover:text-white py-2 rounded-md shadow-md"
+              className="font-bold text-blue-600  border my-8 border-blue-500 hover:bg-gradient-to-br from-blue-500 to-purple-700 hover:text-white py-2 rounded-md shadow-md"
             >
               Ingresar
             </button>
@@ -80,4 +80,4 @@ const LoguinScreen = () => {
   );
 };
 
-export default LoguinScreen;
+export default LoginScreen;

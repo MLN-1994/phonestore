@@ -34,7 +34,7 @@ const ProductList = ({ products, category }) => {
                 <div className="my-4 p-2">
                   <Link
                     to={`/detail/${product.id}`}
-                    className="bg-white border border-sky-500 hover:bg-blue-500 text-black hover:text-white  p-2 rounded-md shadow hover:shadow-lg font-semibold text-lg   flex justify-center w-full "
+                    className="text-blue-600 border border-blue-500 hover:bg-gradient-to-br from-blue-500 to-purple-700  hover:text-white  p-2 rounded-md shadow hover:shadow-lg font-semibold text-lg   flex justify-center w-full "
                   >
                     Ver mas
                   </Link>

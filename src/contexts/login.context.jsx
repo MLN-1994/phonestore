@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
-const mockUser = [
+const adminUser = [
   {
     email: "mariano@gmail.com",
     password: "123",
@@ -26,7 +26,7 @@ export const LoginProvider = ({ children }) => {
   console.log(user)
 
   const login = (values) => {
-    const match = mockUser.find(
+    const match = adminUser.find(
       (user) => user.email === values.email);
 
       if(!match){
