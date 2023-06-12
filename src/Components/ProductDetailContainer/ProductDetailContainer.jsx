@@ -34,11 +34,11 @@ const ProductDetailContainer = ({ productId }) => {
                 <div className="bg-white md:flex m-10 shadow-md rounded-md hover:shadow-2xl">
                   <div className="w-2/3 mx-auto flex justify-center ">
                     <div className="flex items-center">
-                      <img className=" " src={product.image} alt="" />
+                      <img className="w-2/3 mx-auto " src={`${import.meta.env.VITE_API_URL}/${product.image}`}/>
                     </div>
                   </div>
 
-                  <div className="my-12 mx-4 rounded-md border shadow-md">
+                  <div className="my-12 md:mr-6 rounded-md xl:w-2/3  shadow-xl">
                     <div className="p-2">
                       <div className="">
                         <p className="font-bold text-3xl my-6">

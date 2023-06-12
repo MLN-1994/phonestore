@@ -15,7 +15,7 @@ export default function Admin() {
     if (userToken) {
       setToken(userToken);
     } else {
-      navigate("/loguin");
+      navigate("/login");
     }
   }, [token]);
 
@@ -27,7 +27,7 @@ export default function Admin() {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/loguin");
+    navigate("/login");
   };
 
   return (

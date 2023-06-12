@@ -16,7 +16,7 @@ const AddProductForm = () => {
   });
 
   const [showPopup, setShowPopup] = useState(false)
-
+  
   
 
   const handleChange = (e) => {
@@ -44,6 +44,7 @@ const AddProductForm = () => {
       .post(ProductApi.insert(data)) // Send the FormData object as the request data
       .then((response) => {
         console.log("Item inserted successfully");
+        setShowPopup(true);
         // Handle success response
       })
       .catch((error) => {
@@ -53,6 +54,9 @@ const AddProductForm = () => {
 
     console.log(formData);
   };
+
+
+
   useEffect(() => {
     if (showPopup) {
       const timer = setTimeout(() => {
@@ -64,6 +68,8 @@ const AddProductForm = () => {
       };
     }
   }, [showPopup]);
+
+  
 
   return (
     <div className="max-w-md mx-auto p-6">
@@ -184,13 +190,15 @@ const AddProductForm = () => {
           Agregar producto
         </button>
         </div>
-       
+
       </form>
+
+
     {showPopup && (
       <PopUp
       message="Producto cargado correctamente ✔️"
-     
       />
+
     )}
 
     </div>

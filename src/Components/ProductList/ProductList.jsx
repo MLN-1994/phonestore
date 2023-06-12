@@ -12,13 +12,13 @@ const ProductList = ({ products, category }) => {
                 <div className="">
                   <div className="flex justify-center  p-2 ">
                     <img
-                      className="w-52 h-52 object-cover hover:scale-[1.15] duration-500 ease-in-out hover:transition-all "
+                      className="w-52 h-52 object-cover mt-6 hover:scale-[1.15] duration-500 ease-in-out hover:transition-all "
                       src={`${import.meta.env.VITE_API_URL}/${product.image}`}
                       alt=""
                     />
                   </div>
-                  <div className="px-2 py-2 flex-grow ">
-                    <div className="my-2">
+                  <div className="px-2 py-2 flex-grow my-4 ">
+                    <div className="my-4">
                       <p className="font-bold text-xl text-zinc-800">
                         {product.name}
                       </p>

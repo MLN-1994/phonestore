@@ -3,7 +3,7 @@ import { LoginContext } from "../../contexts/login.context";
 import { useNavigate } from "react-router-dom";
 import { UserApi } from "../../config/endpoints";
 
-const LoguinScreen = () => {
+const LoginScreen = () => {
   const { login, user } = useContext(LoginContext);
   const [token, setToken] = useState("");
 
@@ -118,4 +118,4 @@ const LoguinScreen = () => {
   );
 };
 
-export default LoguinScreen;
+export default LoginScreen;
