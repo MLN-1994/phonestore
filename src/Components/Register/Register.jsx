@@ -1,12 +1,8 @@
-import { useContext, useEffect, useState } from "react";
-import { LoginContext } from "../../contexts/login.context";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserApi } from "../../config/endpoints";
 
-const LoguinScreen = () => {
-  const { login, user } = useContext(LoginContext);
-  const [token, setToken] = useState("");
-
+const Register = () => {
   const navigateToAdmin = useNavigate();
 
   const [values, setValues] = useState({
@@ -23,57 +19,29 @@ const LoguinScreen = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // login(values);
 
     const { username, password } = values;
 
-    UserApi.login({ username, password })
+    UserApi.register({ username, password })
       .then((response) => {
-        const { token } = response.data;
-        console.log("Login successful. Token:", token);
+        console.log("Registration successful.");
         // Handle success response
-        // For example, you can store the token in local storage or set it as a cookie
-        localStorage.setItem("token", token);
-        navigateToAdmin("/admin");
+        // For example, you can display a success message or navigate to a success page
+        navigateToAdmin("/success");
       })
       .catch((error) => {
-        console.error("Failed to login:", error);
+        console.error("Failed to register:", error);
         // Handle error response
         // For example, you can display an error message to the user
       });
   };
-
-  useEffect(() => {
-    const userToken = localStorage.getItem("token");
-
-    if (userToken) {
-      setToken(userToken);
-    }
-  }, []);
-
-  if (token) {
-    return (
-      <>
-        <div>
-          <h1>Ya estas logeado!</h1>
-        </div>
-        <button
-          onClick={() => {
-            localStorage.removeItem("token");
-          }}
-        >
-          Cerrar sesión
-        </button>
-      </>
-    );
-  }
 
   return (
     <>
       <div className="mx-auto w-2/3 my-32 bg-zinc-300 py-12 rounded-md shadow">
         <div className="flex justify-center">
           <p className="text-3xl text-transparent bg-clip-text bg-gradient-to-br from-sky-500 to-sky-800 font-bold p-4 ">
-            Login
+            Register
           </p>
         </div>
 
@@ -85,7 +53,7 @@ const LoguinScreen = () => {
             <input
               className="px-12 py-4 bg-slate-100 shadow-md"
               value={values.username}
-              type="username"
+              type="text"
               onChange={handleInputChange}
               name="username"
               placeholder="Username"
@@ -96,21 +64,14 @@ const LoguinScreen = () => {
               type="password"
               onChange={handleInputChange}
               name="password"
-              placeholder="Contraseña"
+              placeholder="Password"
             />
             <button
               onClick={handleSubmit}
               className="font-bold border border-sky-500 hover:bg-sky-500 hover:text-white py-2 rounded-md shadow-md"
             >
-              Ingresar
+              Register
             </button>
-            <div className="flex justify-center">
-              {user.error && (
-                <p className="text-red-500 text-lg font-semibold">
-                  {user.error} ⚠️
-                </p>
-              )}
-            </div>
           </form>
         </div>
       </div>
@@ -118,4 +79,4 @@ const LoguinScreen = () => {
   );
 };
 
-export default LoguinScreen;
+export default Register;

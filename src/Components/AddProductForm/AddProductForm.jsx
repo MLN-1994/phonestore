@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { ProductApi } from "../../config/endpoints";
 
 const AddProductForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     price: "",
-    image: "",
+    image: null, // Change the initial value to null
     description: "",
     category: "",
     stock: "",
@@ -15,22 +16,33 @@ const AddProductForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleImageChange = (e) => {
+    setFormData({ ...formData, image: e.target.files[0] }); // Store the selected file
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes agregar la lógica para enviar los datos del formulario a tu servidor
 
-    {
-      formData &&
-        ProductApi.insert(formData)
-          .then((response) => {
-            console.log("Item inserted successfully");
-            // Handle success response
-          })
-          .catch((error) => {
-            console.error("Failed to insert item:", error);
-            // Handle error response
-          });
-    }
+    const data = new FormData(); // Create a new FormData object
+
+    // Append all form fields to the FormData object
+    data.append("name", formData.name);
+    data.append("price", formData.price);
+    data.append("image", formData.image); // Append the file to the FormData object
+    data.append("description", formData.description);
+    data.append("category", formData.category);
+    data.append("stock", formData.stock);
+
+    axios
+      .post(ProductApi.insert(data)) // Send the FormData object as the request data
+      .then((response) => {
+        console.log("Item inserted successfully");
+        // Handle success response
+      })
+      .catch((error) => {
+        console.error("Failed to insert item:", error);
+        // Handle error response
+      });
 
     console.log(formData);
   };
@@ -86,10 +98,9 @@ const AddProductForm = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="image"
             name="image"
-            type="text"
-            placeholder="URL de la imagen"
-            value={formData.image}
-            onChange={handleChange}
+            type="file" // Change the input type to "file"
+            accept="image/*" // Optional: Restrict file selection to images only
+            onChange={handleImageChange} // Add onChange event handler for file selection
             required
           />
         </div>

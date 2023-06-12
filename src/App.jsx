@@ -11,6 +11,7 @@ import { ProvideProduct } from "./contexts/product.context";
 import Cart from "./Components/Cart/Cart";
 import { LoginProvider } from "./contexts/login.context";
 import Admin from "./Components/Admin/Admin";
+import Register from "./Components/Register/Register";
 
 function App() {
   return (
@@ -28,10 +29,11 @@ function App() {
                   path="/products/:categoryId"
                   element={<ProductsContainer />}
                 />
-                <Route path="/loguin" element={<LoguinScreen />} />
+                <Route path="/login" element={<LoguinScreen />} />
                 <Route path="/detail/:productId" element={<ProductDetail />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/admin" element={<Admin />}></Route>
+                <Route path="/register" element={<Register />}></Route>
               </Routes>
               <Routes></Routes>
             </BrowserRouter>
