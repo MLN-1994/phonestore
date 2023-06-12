@@ -17,6 +17,7 @@ export const useCart = () => {
 function useProvideCart() {
 
     const [cart, setCart] = useState([]);
+    const [clarifications, setClarifications] = useState("");
 
 
     const isIncart = (id) => {
@@ -47,6 +48,7 @@ function useProvideCart() {
         cart.forEach(product => {
           message += `*${product.name}* x${product.amount} \n`;
         });
+        
 
         message += "\n";
         message += "Muchas gracias"

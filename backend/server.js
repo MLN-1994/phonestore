@@ -140,7 +140,7 @@ app.post("/login", (req, res) => {
 //   return jwt.sign(payload, secret, options);
 // }
 
-// const plainPassword = "juancruzcirigliano";
+// const plainPassword = "37846699a";
 
 // const saltRounds = 10;
 
@@ -160,7 +160,7 @@ app.post("/login", (req, res) => {
 
 //     connection.query(
 //       "INSERT INTO admins (username, password) VALUES (?, ?)",
-//       ["juancruzcirigliano", hash],
+//       ["mariano", hash],
 //       function (error, results, fields) {
 //         if (error) {
 //           console.error("Error executing query: ", error);

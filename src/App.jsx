@@ -1,6 +1,6 @@
 import "./App.css";
 import Banner from "./Components/Banner/Banner";
-import LoguinScreen from "./Components/LoguinScreen/LoguinScreen";
+import LoginScreen from "./Components/LoginScreen/LoginScreen";
 import Header from "./Components/Header/Header";
 import ProductDetail from "./Components/ProductDetail/ProductDetail";
 import ProductsContainer from "./Components/ProductsContainer/ProductsContainer";
@@ -28,7 +28,7 @@ function App() {
                   path="/products/:categoryId"
                   element={<ProductsContainer />}
                 />
-                <Route path="/loguin" element={<LoguinScreen />} />
+                <Route path="/loguin" element={<LoginScreen />} />
                 <Route path="/detail/:productId" element={<ProductDetail />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/admin" element={<Admin />}></Route>

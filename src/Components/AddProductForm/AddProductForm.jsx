@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ProductApi } from "../../config/endpoints";
+import PopUp from "../PopUp/PopUp";
 
 
 
@@ -12,6 +13,10 @@ const AddProductForm = () => {
     category: "",
     stock: "",
   });
+
+  const [showPopup, setShowPopup] = useState(false)
+
+  
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -26,6 +31,7 @@ const AddProductForm = () => {
         ProductApi.insert(formData)
           .then((response) => {
             console.log("Item inserted successfully");
+            setShowPopup(true)
             // Handle success response
           })
           .catch((error) => {
@@ -36,6 +42,17 @@ const AddProductForm = () => {
 
     console.log(formData);
   };
+  useEffect(() => {
+    if (showPopup) {
+      const timer = setTimeout(() => {
+        setShowPopup(false);
+      }, 5000);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [showPopup]);
 
   return (
     <div className="max-w-md mx-auto p-6">
@@ -148,13 +165,24 @@ const AddProductForm = () => {
             required
           />
         </div>
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+
+        <div className="flex justify-center">
+           <button
+          className="font-bold text-blue-600  border my-8 border-blue-500 hover:bg-gradient-to-br from-blue-500 to-purple-700 hover:text-white w-full px-4 py-2 rounded-md shadow-md"
           type="submit"
         >
-          Agregar
+          Agregar producto
         </button>
+        </div>
+       
       </form>
+    {showPopup && (
+      <PopUp
+      message="Producto cargado correctamente ✔️"
+     
+      />
+    )}
+
     </div>
   );
 };
