@@ -47,17 +47,17 @@ const AddProductForm = () => {
 
   console.log(showPopup);
 
-  // useEffect(() => {
-  //   if (showPopup) {
-  //     const timer = setTimeout(() => {
-  //       setShowPopup(false);
-  //     }, 5000);
+  useEffect(() => {
+    if (showPopup) {
+      const timer = setTimeout(() => {
+        setShowPopup(false);
+      }, 5000);
 
-  //     return () => {
-  //       clearTimeout(timer);
-  //     };
-  //   }
-  // }, [showPopup]);
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [showPopup]);
 
   
 

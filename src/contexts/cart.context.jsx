@@ -14,9 +14,11 @@ export const useCart = () => {
 
 function useProvideCart() {
   const [cart, setCart] = useState([]);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [clarifications, setClarifications] = useState("");
 
-  const isIncart = (id) => {
+  const isInCart = (id) => {
     return cart.some((item) => item.id === id);
   };
 
@@ -31,24 +33,36 @@ function useProvideCart() {
   const addItem = (item) => {
     setCart([...cart, item]);
   };
-  //chekout wsp
+
+  const setNameValue = (customerName) => {
+    setName(customerName);
+  };
+
+  const setEmailValue = (customerEmail) => {
+    setEmail(customerEmail);
+  };
+
+  const setClarificationsValue = (customerClarifications) => {
+    setClarifications(customerClarifications);
+  };
   const checkout = () => {
     let message = "¡Hola! Quisiera hacer el siguiente pedido: \n\n";
 
     cart.forEach((product) => {
       message += `*${product.name}* x${product.amount} \n`;
     });
-
+    
     message += "\n";
+    message += "Nombre: " + name + "\n";
+    message += "Correo Electrónico: " + email + "\n";
+    message += "Aclaraciones: " + clarifications + "\n";
     message += "Muchas gracias";
 
     const encodedMessage = encodeURIComponent(message);
     const phoneNumber = "542314610301";
     const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
 
-    // Aquí puedes hacer algo con la URL, como redireccionar a ella o imprimir en la consola
     console.log(url);
-
     window.location.href = url;
   };
 
@@ -58,6 +72,9 @@ function useProvideCart() {
     checkout,
     removeItem,
     totalPriceCart,
-    isIncart,
+    isInCart,
+    setName: setNameValue,
+    setEmail: setEmailValue,
+    setClarifications: setClarificationsValue
   };
 }

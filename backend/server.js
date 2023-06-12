@@ -156,13 +156,51 @@ app.post("/login", (req, res) => {
   );
 });
 
-
-
-
 app.get("/uploads/:filename", (req, res) => {
   const { filename } = req.params;
   res.sendFile(path.join(__dirname, "uploads", filename));
 });
+
+// Endpoint for deleting an item by ID
+app.delete("/products/:id", (req, res) => {
+  const itemId = req.params.id;
+
+  // Check if the item exists
+  connection.query(
+    "SELECT * FROM products WHERE id = ?",
+    [itemId],
+    (error, results) => {
+      if (error) {
+        console.error("Error executing query: ", error);
+        res.status(500).send("Error executing query");
+        return;
+      }
+
+      // If the item doesn't exist, send error message
+      if (results.length === 0) {
+        res.status(404).json({ message: "Item not found" });
+        return;
+      }
+      // Delete the item from the database
+      connection.query(
+        "DELETE FROM products WHERE id = ?",
+        [itemId],
+        (deleteError, deleteResults) => {
+          if (deleteError) {
+            console.error("Error deleting item: ", deleteError);
+            res.status(500).json({ error: "Failed to delete item" });
+            return;
+          }
+
+          // Item successfully deleted
+          console.log("Item deleted successfully");
+          res.status(200).json({ message: "Item deleted successfully" });
+        }
+      );
+    }
+  );
+});
+
 //inicia servidor
 
 app.listen(port, () => {

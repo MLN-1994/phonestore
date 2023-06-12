@@ -1,13 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { ProductApi } from "../../config/endpoints";
 
 const ProductList = ({ products, category }) => {
+  const [logged, setLogged] = useState(false);
+
+  const handleDelete = async (productId) => {
+    try {
+      await ProductApi.delete(productId);
+      // Realizar alguna acción adicional después de eliminar el item, como actualizar la lista de productos
+      window.location.reload(); // Refresh the page
+    } catch (error) {
+      console.error("Error deleting product:", error);
+      // Manejar el error de acuerdo a tus necesidades
+    }
+  };
+
+  useEffect(() => {
+    const userToken = localStorage.getItem("token");
+
+    if (userToken) {
+      setLogged(true);
+    }
+  }, []);
+
   return (
     <>
       <div className="py-12  w-3/4 mx-auto ">
         <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 px-2 gap-4 ">
           {products.map((product) => (
             <div key={product.id} className="">
+              <div className="">
+
+                {logged && <button onClick={() => handleDelete(product.id)}>x</button>}
+                
+              </div>
               <div className="border bg-white p-2 shadow rounded-xl hover:shadow-2xl ">
                 <div className="">
                   <div className="flex justify-center  p-2 ">

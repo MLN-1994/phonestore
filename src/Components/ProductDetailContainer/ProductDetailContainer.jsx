@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 
 const ProductDetailContainer = ({ productId }) => {
   const { getItemById, products } = useProduct();
-  const { addItem, isIncart } = useCart();
-  console.log(isIncart(productId));
+  const { addItem, isInCart } = useCart();
+  
   const [product, setProduct] = useState(null);
   const [amount, setAmount] = useState(1);
 
@@ -61,7 +61,7 @@ const ProductDetailContainer = ({ productId }) => {
                       <hr />
 
                       <div className=" rounded-md my-4">
-                        {!isIncart(productId) ? (
+                        {!isInCart(productId) ? (
                           <ProductCounter
                             max={product.stock}
                             amount={amount}
@@ -79,7 +79,7 @@ const ProductDetailContainer = ({ productId }) => {
                       </div>
                       <div
                         className={`flex justify-center  ${
-                          isIncart(productId) ? "hidden" : ""
+                          isInCart(productId) ? "hidden" : ""
                         }`}
                       >
                         <button
