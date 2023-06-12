@@ -5,6 +5,7 @@ import { UserApi } from "../../config/endpoints";
 
 const LoguinScreen = () => {
   const { login, user } = useContext(LoginContext);
+  const [token, setToken] = useState("");
 
   const navigateToAdmin = useNavigate();
 
@@ -43,10 +44,29 @@ const LoguinScreen = () => {
   };
 
   useEffect(() => {
-    if (user.logged) {
-      navigateToAdmin("/admin");
+    const userToken = localStorage.getItem("token");
+
+    if (userToken) {
+      setToken(userToken);
     }
-  }, [user.logged, navigateToAdmin]);
+  }, []);
+
+  if (token) {
+    return (
+      <>
+        <div>
+          <h1>Ya estas logeado!</h1>
+        </div>
+        <button
+          onClick={() => {
+            localStorage.removeItem("token");
+          }}
+        >
+          Cerrar sesión
+        </button>
+      </>
+    );
+  }
 
   return (
     <>

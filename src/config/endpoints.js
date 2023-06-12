@@ -1,8 +1,11 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: import.meta.env.VITE_API_URL,
 });
+
+const hola = import.meta.env.VITE_API_URL
+console.log(hola)
 
 api.interceptors.request.use(
   (config) => {
@@ -27,6 +30,7 @@ const ProductApi = {
 
 const UserApi = {
   login: (formData) => api.post(`/login`, formData),
+  register: (formData) => api.post(`/register`, formData),
 };
 
 export { ProductApi, UserApi };
