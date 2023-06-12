@@ -1,82 +1,63 @@
-import { useContext, createContext, useState } from 'react';
+import { useContext, createContext, useState } from "react";
 
 const cartContext = createContext({});
 
-export function ProvideCart({ children } ) {
-    
-    const cart  = useProvideCart();
+export function ProvideCart({ children }) {
+  const cart = useProvideCart();
 
-    return <cartContext.Provider value={cart}>{children}</cartContext.Provider>;
+  return <cartContext.Provider value={cart}>{children}</cartContext.Provider>;
 }
 
 export const useCart = () => {
-    return useContext(cartContext);
+  return useContext(cartContext);
 };
 
-
 function useProvideCart() {
+  const [cart, setCart] = useState([]);
+  const [clarifications, setClarifications] = useState("");
 
-    const [cart, setCart] = useState([]);
-    const [clarifications, setClarifications] = useState("");
+  const isIncart = (id) => {
+    return cart.some((item) => item.id === id);
+  };
 
+  const removeItem = (id) => {
+    setCart(cart.filter((item) => item.id !== id));
+  };
 
-    const isIncart = (id) => {
-      return cart.some((item) => item.id === id);
-    };
+  const totalPriceCart = () => {
+    return cart.reduce((acc, item) => acc + item.price * item.amount, 0);
+  };
 
-    const removeItem = (id) => {
-        setCart(cart.filter((item) => item.id !== id));
-      };
+  const addItem = (item) => {
+    setCart([...cart, item]);
+  };
+  //chekout wsp
+  const checkout = () => {
+    let message = "¡Hola! Quisiera hacer el siguiente pedido: \n\n";
 
-      const totalPriceCart = () => {
-        return cart.reduce((acc, item) => acc + item.price * item.amount, 0);
-      };
-    
-    const addItem = (item) => {
-        
-        setCart([
-            ...cart,
-            item
-        ])
+    cart.forEach((product) => {
+      message += `*${product.name}* x${product.amount} \n`;
+    });
 
-    }
-//chekout wsp
-    const checkout = () => {
-     
-        let message = "¡Hola! Quisiera hacer el siguiente pedido: \n\n";
-      
-        cart.forEach(product => {
-          message += `*${product.name}* x${product.amount} \n`;
-        });
-        
+    message += "\n";
+    message += "Muchas gracias";
 
-        message += "\n";
-        message += "Muchas gracias"
-      
-        const encodedMessage = encodeURIComponent(message);
-        const phoneNumber = "542314610301";
-        const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
-      
-        // Aquí puedes hacer algo con la URL, como redireccionar a ella o imprimir en la consola
-        console.log(url);
+    const encodedMessage = encodeURIComponent(message);
+    const phoneNumber = "542314610301";
+    const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
 
-        window.location.href = url;
+    // Aquí puedes hacer algo con la URL, como redireccionar a ella o imprimir en la consola
+    console.log(url);
 
-      };
-      
+    window.location.href = url;
+  };
 
-    return {
-        cart,
-        addItem,
-        checkout,
-        removeItem,
-        totalPriceCart, 
-        isIncart
-        
-    }
-        
-    
-    
-
-
+  return {
+    cart,
+    addItem,
+    checkout,
+    removeItem,
+    totalPriceCart,
+    isIncart,
+  };
 }

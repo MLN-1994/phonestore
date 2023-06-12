@@ -3,8 +3,6 @@ import axios from "axios";
 import { ProductApi } from "../../config/endpoints";
 import PopUp from "../PopUp/PopUp";
 
-
-
 const AddProductForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -15,9 +13,7 @@ const AddProductForm = () => {
     stock: "",
   });
 
-  const [showPopup, setShowPopup] = useState(false)
-
-  
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -27,43 +23,41 @@ const AddProductForm = () => {
     setFormData({ ...formData, image: e.target.files[0] }); // Store the selected file
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = new FormData(); // Create a new FormData object
+    try {
+      const data = new FormData();
+      data.append("name", formData.name);
+      data.append("price", formData.price);
+      data.append("image", formData.image);
+      data.append("description", formData.description);
+      data.append("category", formData.category);
+      data.append("stock", formData.stock);
 
-    // Append all form fields to the FormData object
-    data.append("name", formData.name);
-    data.append("price", formData.price);
-    data.append("image", formData.image); // Append the file to the FormData object
-    data.append("description", formData.description);
-    data.append("category", formData.category);
-    data.append("stock", formData.stock);
-
-    axios
-      .post(ProductApi.insert(data)) // Send the FormData object as the request data
-      .then((response) => {
-        console.log("Item inserted successfully");
-        // Handle success response
-      })
-      .catch((error) => {
-        console.error("Failed to insert item:", error);
-        // Handle error response
-      });
-
-    console.log(formData);
-  };
-  useEffect(() => {
-    if (showPopup) {
-      const timer = setTimeout(() => {
-        setShowPopup(false);
-      }, 5000);
-
-      return () => {
-        clearTimeout(timer);
-      };
+      const response = await ProductApi.insert(data);
+      console.log("Item inserted successfully", response);
+      setShowPopup(true);
+      // Handle success response
+    } catch (error) {
+      console.error("Failed to insert item:", error);
+      // Handle error response
     }
-  }, [showPopup]);
+  };
+
+  console.log(showPopup);
+
+  // useEffect(() => {
+  //   if (showPopup) {
+  //     const timer = setTimeout(() => {
+  //       setShowPopup(false);
+  //     }, 5000);
+
+  //     return () => {
+  //       clearTimeout(timer);
+  //     };
+  //   }
+  // }, [showPopup]);
 
   return (
     <div className="max-w-md mx-auto p-6">
@@ -177,22 +171,15 @@ const AddProductForm = () => {
         </div>
 
         <div className="flex justify-center">
-           <button
-          className="font-bold text-blue-600  border my-8 border-blue-500 hover:bg-gradient-to-br from-blue-500 to-purple-700 hover:text-white w-full px-4 py-2 rounded-md shadow-md"
-          type="submit"
-        >
-          Agregar producto
-        </button>
+          <button
+            className="font-bold text-blue-600  border my-8 border-blue-500 hover:bg-gradient-to-br from-blue-500 to-purple-700 hover:text-white w-full px-4 py-2 rounded-md shadow-md"
+            type="submit"
+          >
+            Agregar producto
+          </button>
         </div>
-       
       </form>
-    {showPopup && (
-      <PopUp
-      message="Producto cargado correctamente ✔️"
-     
-      />
-    )}
-
+      {showPopup && <PopUp message="Producto cargado correctamente ✔️" />}
     </div>
   );
 };
