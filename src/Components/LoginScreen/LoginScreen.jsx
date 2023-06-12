@@ -23,7 +23,6 @@ const LoginScreen = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // login(values);
 
     const { username, password } = values;
 
@@ -31,15 +30,11 @@ const LoginScreen = () => {
       .then((response) => {
         const { token } = response.data;
         console.log("Login successful. Token:", token);
-        // Handle success response
-        // For example, you can store the token in local storage or set it as a cookie
         localStorage.setItem("token", token);
         navigateToAdmin("/admin");
       })
       .catch((error) => {
         console.error("Failed to login:", error);
-        // Handle error response
-        // For example, you can display an error message to the user
       });
   };
 
@@ -54,36 +49,35 @@ const LoginScreen = () => {
   if (token) {
     return (
       <>
-        <div>
-          <h1>Ya estas logeado!</h1>
+        <div className="flex flex-col items-center justify-center h-screen">
+          <h1 className="text-3xl font-bold mb-4">¡Ya estás logueado!</h1>
+          <button
+            onClick={() => {
+              localStorage.removeItem("token");
+              setToken("");
+            }}
+            className="px-4 py-2 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600"
+          >
+            Cerrar sesión
+          </button>
         </div>
-        <button
-          onClick={() => {
-            localStorage.removeItem("token");
-          }}
-        >
-          Cerrar sesión
-        </button>
       </>
     );
   }
 
   return (
     <>
-      <div className="mx-auto w-2/3 my-16  ">
+      <div className="mx-auto w-2/3 my-16">
         <div className="flex justify-center">
-          <p className="text-3xl mb-6 text-transparent  bg-clip-text bg-gradient-to-br from-blue-500 to-purple-700 font-bold p-4 ">
+          <p className="text-3xl mb-6 bg-gradient-to-br from-blue-500 to-purple-700 text-transparent bg-clip-text font-bold p-4">
             Login
           </p>
         </div>
 
-        <div className=" flex justify-center ">
-          <form
-            className="border flex flex-col   bg-white p-8 rounded-md shadow-md"
-            action=""
-          >
+        <div className="flex justify-center">
+          <form className="w-full max-w-sm">
             <input
-              className="px-12 py-4 bg-slate-100 shadow-md"
+              className="w-full px-4 py-2 mb-4 bg-gray-200 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={values.username}
               type="username"
               onChange={handleInputChange}
@@ -91,7 +85,7 @@ const LoginScreen = () => {
               placeholder="Username"
             />
             <input
-              className="px-12 py-4 my-4 bg-slate-100 shadow-md"
+              className="w-full px-4 py-2 mb-4 bg-gray-200 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={values.password}
               type="password"
               onChange={handleInputChange}
@@ -100,15 +94,13 @@ const LoginScreen = () => {
             />
             <button
               onClick={handleSubmit}
-              className="font-bold text-blue-600  border my-8 border-blue-500 hover:bg-gradient-to-br from-blue-500 to-purple-700 hover:text-white py-2 rounded-md shadow-md"
+              className="w-full px-4 py-2 text-white bg-gradient-to-br from-blue-500 to-purple-700 rounded-md shadow-md hover:from-blue-600 hover:to-purple-800 focus:outline-none"
             >
               Ingresar
             </button>
-            <div className="flex justify-center">
+            <div className="flex justify-center mt-4">
               {user.error && (
-                <p className="text-red-500 text-lg font-semibold">
-                  {user.error} ⚠️
-                </p>
+                <p className="text-red-500 font-semibold">{user.error} ⚠️</p>
               )}
             </div>
           </form>
