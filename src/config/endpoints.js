@@ -24,6 +24,7 @@ const ProductApi = {
   getAll: () => api.get(`/products`),
   insert: (formData) => api.post(`/insert`, formData),
   delete: (itemId) => api.delete(`/products/${itemId}`),
+  
 };
 
 const UserApi = {
