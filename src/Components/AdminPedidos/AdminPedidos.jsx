@@ -28,6 +28,17 @@ const AdminPedidos = () => {
     }
   }, [logged]);
 
+  const formatTime = (timeString) => {
+    const date = new Date(timeString);
+    const formattedDate = `${date.getDate()}/${
+      date.getMonth() + 1
+    }/${date.getFullYear()}`;
+    const formattedTime = date.toLocaleTimeString("es-AR", {
+      timeStyle: "medium",
+    });
+    return `${formattedDate} ${formattedTime}`;
+  };
+
   return (
     <div className="py-12 w-3/4 mx-auto">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -52,7 +63,7 @@ const AdminPedidos = () => {
               </div>
               <div className="my-4 p-2">
                 <p className="font-bold text-xl">Horario: </p>
-                <p className="italic">{order.time}</p>
+                <p className="italic">{formatTime(order.time)}</p>
               </div>
               <div className="my-4 p-2">
                 <p className="font-bold text-xl">Precio total: </p>
