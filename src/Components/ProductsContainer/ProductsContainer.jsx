@@ -5,17 +5,17 @@ import { useParams } from "react-router-dom";
 import { useProduct } from "../../contexts/product.context";
 
 function ProductsContainer() {
-
   const { products, getProductsByCategory } = useProduct();
 
   const { categoryId } = useParams();
 
-  const productsList = categoryId ? getProductsByCategory(categoryId) : products;
- 
+  const productsList = categoryId
+    ? getProductsByCategory(categoryId)
+    : products;
 
   return (
-    <>  
-      <ProductList products={productsList}/>
+    <>
+      <ProductList products={productsList} />
     </>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { ProductApi } from "../../config/endpoints";
+import { OrderApi } from "../../config/endpoints";
+import { MdDelete } from "react-icons/md";
 
 const AdminPedidos = () => {
   const [orders, setOrders] = useState([]);
@@ -17,7 +18,7 @@ const AdminPedidos = () => {
     if (logged) {
       const fetchOrders = async () => {
         try {
-          const response = await ProductApi.getOrders();
+          const response = await OrderApi.getOrders();
           setOrders(response.data);
         } catch (error) {
           console.error("Error fetching orders:", error);
@@ -27,6 +28,31 @@ const AdminPedidos = () => {
       fetchOrders();
     }
   }, [logged]);
+
+  const formatTime = (timeString) => {
+    const date = new Date(timeString);
+    const formattedDate = `${date.getDate()}/${
+      date.getMonth() + 1
+    }/${date.getFullYear()}`;
+    const formattedTime = date.toLocaleTimeString("es-AR", {
+      timeStyle: "medium",
+    });
+    return `${formattedDate} ${formattedTime}`;
+  };
+
+  const handleDeleteOrder = async (orderId) => {
+    try {
+      await OrderApi.deleteOrder(orderId);
+      // Remove the deleted order from the state array
+      setOrders((prevOrders) =>
+        prevOrders.filter((order) => order.id !== orderId)
+      );
+      // Handle successful deletion (e.g., display a success message, update the UI)
+    } catch (error) {
+      console.error("Error deleting order:", error);
+      // Handle error scenario (e.g., display an error message)
+    }
+  };
 
   return (
     <div className="py-12 w-3/4 mx-auto">
@@ -52,7 +78,7 @@ const AdminPedidos = () => {
               </div>
               <div className="my-4 p-2">
                 <p className="font-bold text-xl">Horario: </p>
-                <p className="italic">{order.time}</p>
+                <p className="italic">{formatTime(order.time)}</p>
               </div>
               <div className="my-4 p-2">
                 <p className="font-bold text-xl">Precio total: </p>
@@ -62,6 +88,12 @@ const AdminPedidos = () => {
                 <p className="font-bold text-xl">Comentarios: </p>
                 <p className="italic">{order.aclaraciones}</p>
               </div>
+              <button
+                className="absolute top-2 right-2 text-red-500"
+                onClick={() => handleDeleteOrder(order.id)}
+              >
+                <MdDelete size={24} />
+              </button>
             </div>
           </div>
         ))}

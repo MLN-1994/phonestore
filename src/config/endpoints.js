@@ -24,8 +24,9 @@ const ProductApi = {
   getAll: () => api.get(`/products`),
   insert: (formData) => api.post(`/insert`, formData),
   delete: (itemId) => api.delete(`/products/${itemId}`),
-  order: (formData) => api.post(`/orders`, formData),
-  getOrders: () => api.get("/getorders"),
+
+  update: (productId, formData) =>
+    api.put(`/products/${productId}/update`, formData),
 };
 
 const UserApi = {
@@ -33,4 +34,10 @@ const UserApi = {
   register: (formData) => api.post(`/register`, formData),
 };
 
-export { ProductApi, UserApi };
+const OrderApi = {
+  order: (formData) => api.post(`/orders`, formData),
+  getOrders: () => api.get("/getorders"),
+  deleteOrder: (orderId) => api.delete(`/orders/${orderId}/delete`),
+};
+
+export { ProductApi, UserApi, OrderApi };

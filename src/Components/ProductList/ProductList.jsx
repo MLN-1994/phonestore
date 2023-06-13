@@ -2,19 +2,29 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ProductApi } from "../../config/endpoints";
 import { MdDelete } from "react-icons/md";
+import EditWindow from "../EditWindow/EditWindow";
 
 const ProductList = ({ products, category }) => {
   const [logged, setLogged] = useState(false);
-
+  const [editProductId, setEditProductId] = useState(null); // Track the product ID to edit
+  const [showEditWindow, setShowEditWindow] = useState(false); // Control the visibility of the EditWindow
   const handleDelete = async (productId) => {
     try {
       await ProductApi.delete(productId);
-      // Realizar alguna acción adicional después de eliminar el item, como actualizar la lista de productos
-      window.location.reload(); // Refresh the page
+      // Remove the deleted product from the state array
+      setProducts((prevProducts) =>
+        prevProducts.filter((product) => product.id !== productId)
+      );
+      // Handle successful deletion (e.g., display a success message)
     } catch (error) {
       console.error("Error deleting product:", error);
-      // Manejar el error de acuerdo a tus necesidades
+      // Handle error scenario (e.g., display an error message)
     }
+  };
+
+  const handleEdit = (productId) => {
+    setEditProductId(productId);
+    setShowEditWindow(true);
   };
 
   useEffect(() => {
@@ -32,13 +42,21 @@ const ProductList = ({ products, category }) => {
           {products.map((product) => (
             <div key={product.id} className="relative">
               {logged && (
-                <MdDelete
-                  size="24"
-                  className="absolute top-0 right-0 m-2 text-red-500 cursor-pointer"
-                  onClick={() => handleDelete(product.id)}
-                >
-                  x
-                </MdDelete>
+                <>
+                  <MdDelete
+                    size="24"
+                    className="absolute top-0 right-0 m-2 text-red-500 cursor-pointer"
+                    onClick={() => handleDelete(product.id)}
+                  >
+                    x
+                  </MdDelete>
+                  <button
+                    className="absolute top-0 left-0 m-2 text-blue-500 cursor-pointer"
+                    onClick={() => handleEdit(product.id)}
+                  >
+                    Editar
+                  </button>
+                </>
               )}
               <div className="border bg-white p-2 shadow rounded-xl hover:shadow-2xl">
                 <div className="">
@@ -73,6 +91,20 @@ const ProductList = ({ products, category }) => {
           ))}
         </div>
       </div>
+
+      {showEditWindow && (
+        <EditWindow
+          className="z-10"
+          productId={editProductId}
+          initialData={products.find((product) => product.id === editProductId)}
+          onClose={() => setShowEditWindow(false)}
+          onEdit={(productId, editedData) => {
+            // Handle the edit operation here
+            console.log("Edit product:", productId, editedData);
+            // Call the appropriate API endpoint to update the product
+          }}
+        />
+      )}
     </>
   );
 };
