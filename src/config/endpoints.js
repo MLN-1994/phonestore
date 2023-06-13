@@ -26,6 +26,8 @@ const ProductApi = {
   delete: (itemId) => api.delete(`/products/${itemId}`),
   order: (formData) => api.post(`/orders`, formData),
   getOrders: () => api.get("/getorders"),
+  update: (productId, formData) =>
+    api.put(`/products/${productId}/update`, formData),
 };
 
 const UserApi = {

@@ -248,6 +248,25 @@ app.get("/getorders", (req, res) => {
   });
 });
 
+app.put("/products/:id/update", (req, res) => {
+  const productId = req.params.id;
+  const { name, price, category } = req.body;
+
+  // Update the product in the MySQL database
+  connection.query(
+    "UPDATE products SET name = ?, price = ?, category = ? WHERE id = ?",
+    [name, price, category, productId],
+    (err, result) => {
+      if (err) {
+        console.error("Error updating product:", err);
+        res.status(500).json({ error: "Failed to update product" });
+      } else {
+        res.status(200).json({ message: "Product updated successfully" });
+      }
+    }
+  );
+});
+
 //inicia servidor
 
 app.listen(port, () => {
