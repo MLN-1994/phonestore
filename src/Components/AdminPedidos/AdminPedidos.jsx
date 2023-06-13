@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { ProductApi } from "../../config/endpoints";
+import { OrderApi } from "../../config/endpoints";
+import { MdDelete } from "react-icons/md";
 
 const AdminPedidos = () => {
   const [orders, setOrders] = useState([]);
@@ -17,7 +18,7 @@ const AdminPedidos = () => {
     if (logged) {
       const fetchOrders = async () => {
         try {
-          const response = await ProductApi.getOrders();
+          const response = await OrderApi.getOrders();
           setOrders(response.data);
         } catch (error) {
           console.error("Error fetching orders:", error);
@@ -37,6 +38,20 @@ const AdminPedidos = () => {
       timeStyle: "medium",
     });
     return `${formattedDate} ${formattedTime}`;
+  };
+
+  const handleDeleteOrder = async (orderId) => {
+    try {
+      await OrderApi.deleteOrder(orderId);
+      // Remove the deleted order from the state array
+      setOrders((prevOrders) =>
+        prevOrders.filter((order) => order.id !== orderId)
+      );
+      // Handle successful deletion (e.g., display a success message, update the UI)
+    } catch (error) {
+      console.error("Error deleting order:", error);
+      // Handle error scenario (e.g., display an error message)
+    }
   };
 
   return (
@@ -73,6 +88,12 @@ const AdminPedidos = () => {
                 <p className="font-bold text-xl">Comentarios: </p>
                 <p className="italic">{order.aclaraciones}</p>
               </div>
+              <button
+                className="absolute top-2 right-2 text-red-500"
+                onClick={() => handleDeleteOrder(order.id)}
+              >
+                <MdDelete size={24} />
+              </button>
             </div>
           </div>
         ))}

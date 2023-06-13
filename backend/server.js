@@ -267,6 +267,23 @@ app.put("/products/:id/update", (req, res) => {
   );
 });
 
+// DELETE endpoint for deleting an order
+app.delete("/orders/:id/delete", (req, res) => {
+  const orderId = req.params.id;
+
+  const deleteOrderQuery = "DELETE FROM orders WHERE id = ?";
+
+  connection.query(deleteOrderQuery, [orderId], (error, results) => {
+    if (error) {
+      console.error("Error deleting order:", error);
+      res.status(500).json({ error: "Failed to delete the order" });
+    } else {
+      console.log("Order deleted successfully");
+      res.sendStatus(200);
+    }
+  });
+});
+
 //inicia servidor
 
 app.listen(port, () => {

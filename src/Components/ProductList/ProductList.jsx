@@ -8,15 +8,17 @@ const ProductList = ({ products, category }) => {
   const [logged, setLogged] = useState(false);
   const [editProductId, setEditProductId] = useState(null); // Track the product ID to edit
   const [showEditWindow, setShowEditWindow] = useState(false); // Control the visibility of the EditWindow
-
   const handleDelete = async (productId) => {
     try {
       await ProductApi.delete(productId);
-      // Realizar alguna acción adicional después de eliminar el item, como actualizar la lista de productos
-      window.location.reload(); // Refresh the page
+      // Remove the deleted product from the state array
+      setProducts((prevProducts) =>
+        prevProducts.filter((product) => product.id !== productId)
+      );
+      // Handle successful deletion (e.g., display a success message)
     } catch (error) {
       console.error("Error deleting product:", error);
-      // Manejar el error de acuerdo a tus necesidades
+      // Handle error scenario (e.g., display an error message)
     }
   };
 

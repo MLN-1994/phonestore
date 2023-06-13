@@ -1,5 +1,5 @@
 import { useContext, createContext, useState } from "react";
-import { ProductApi } from "../config/endpoints";
+import { OrderApi } from "../config/endpoints";
 import { format } from "date-fns";
 
 const cartContext = createContext({});
@@ -88,7 +88,7 @@ function useProvideCart() {
     const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
 
     try {
-      await ProductApi.order(orderData);
+      await OrderApi.order(orderData);
       // Handle successful order
       console.log("Order placed successfully");
     } catch (error) {
