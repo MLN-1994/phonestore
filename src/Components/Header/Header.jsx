@@ -29,12 +29,21 @@ export default function Header() {
           </div>
 
           {logged && (
-            <Link
-              to="/admin"
-              className="fixed right-4 bottom-4 bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
-            >
-              Agregar productos
-            </Link>
+            <>
+              <Link
+                to="/admin"
+                className="fixed z-10 right-4 bottom-4 bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Agregar productos
+              </Link>
+
+              <Link
+                to="/pedidos"
+                className="fixed z-10 right-4 bottom-16 bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Pedidos recientes
+              </Link>
+            </>
           )}
 
           <div className="col-start-12 ">

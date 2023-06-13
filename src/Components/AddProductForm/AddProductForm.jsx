@@ -45,8 +45,6 @@ const AddProductForm = () => {
     }
   };
 
-  console.log(showPopup);
-
   useEffect(() => {
     if (showPopup) {
       const timer = setTimeout(() => {
