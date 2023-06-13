@@ -11,6 +11,7 @@ import { ProvideProduct } from "./contexts/product.context";
 import Cart from "./Components/Cart/Cart";
 import { LoginProvider } from "./contexts/login.context";
 import Admin from "./Components/Admin/Admin";
+import AdminPedidos from "./Components/AdminPedidos/AdminPedidos";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
                 <Route path="/detail/:productId" element={<ProductDetail />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/admin" element={<Admin />}></Route>
+                <Route path="/pedidos" element={<AdminPedidos />} />
               </Routes>
               <Routes></Routes>
             </BrowserRouter>

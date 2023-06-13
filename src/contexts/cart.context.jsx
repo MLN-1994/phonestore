@@ -1,4 +1,6 @@
 import { useContext, createContext, useState } from "react";
+import { ProductApi } from "../config/endpoints";
+import { format } from "date-fns";
 
 const cartContext = createContext({});
 
@@ -45,13 +47,36 @@ function useProvideCart() {
   const setClarificationsValue = (customerClarifications) => {
     setClarifications(customerClarifications);
   };
-  const checkout = () => {
+  const checkout = async () => {
+    // Validate name and email
+    if (!name || !email) {
+      alert("Completa todos los campos!");
+      return;
+    }
+
+    // Rest of the code for checkout process
     let message = "¡Hola! Quisiera hacer el siguiente pedido: \n\n";
 
     cart.forEach((product) => {
       message += `*${product.name}* x${product.amount} \n`;
     });
-    
+
+    const timestamp = new Date();
+    const formattedTime = format(timestamp, "yyyy-MM-dd HH:mm:ss");
+    const totalPrice =
+      cart.length === 1
+        ? cart[0].price
+        : cart.reduce((total, product) => total + product.price, 0);
+
+    const orderData = {
+      products: cart.map((product) => product.name).join(", "),
+      customer_name: name,
+      customer_email: email,
+      time: formattedTime,
+      total_price: totalPrice,
+      aclaraciones: clarifications,
+    };
+
     message += "\n";
     message += "Nombre: " + name + "\n";
     message += "Correo Electrónico: " + email + "\n";
@@ -62,7 +87,15 @@ function useProvideCart() {
     const phoneNumber = "542314610301";
     const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
 
-    console.log(url);
+    try {
+      await ProductApi.order(orderData);
+      // Handle successful order
+      console.log("Order placed successfully");
+    } catch (error) {
+      // Handle error
+      console.error("Error placing order:", error);
+    }
+
     window.location.href = url;
   };
 
@@ -75,6 +108,6 @@ function useProvideCart() {
     isInCart,
     setName: setNameValue,
     setEmail: setEmailValue,
-    setClarifications: setClarificationsValue
+    setClarifications: setClarificationsValue,
   };
 }

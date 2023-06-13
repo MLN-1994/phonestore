@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+
 import { ProductApi } from "../../config/endpoints";
 import PopUp from "../PopUp/PopUp";
 
@@ -9,7 +9,7 @@ const AddProductForm = () => {
     price: "",
     image: null, // Change the initial value to null
     description: "",
-    category: "",
+    category: "phones",
     stock: "",
   });
 
@@ -45,8 +45,6 @@ const AddProductForm = () => {
     }
   };
 
-  console.log(showPopup);
-
   useEffect(() => {
     if (showPopup) {
       const timer = setTimeout(() => {
@@ -58,8 +56,6 @@ const AddProductForm = () => {
       };
     }
   }, [showPopup]);
-
-  
 
   return (
     <div className="max-w-md mx-auto p-6">
@@ -142,16 +138,19 @@ const AddProductForm = () => {
           >
             Categoría
           </label>
-          <input
+          <select
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="category"
             name="category"
-            type="text"
-            placeholder="Categoría del producto"
             value={formData.category}
             onChange={handleChange}
             required
-          />
+          >
+            <option value="phones">Celulares</option>
+            <option value="cargadores">Cargadores</option>
+            <option value="fundas">Fundas</option>
+            <option value="otros">Otros</option>
+          </select>
         </div>
         <div className="mb-4">
           <label

@@ -201,6 +201,53 @@ app.delete("/products/:id", (req, res) => {
   );
 });
 
+app.post("/orders", (req, res) => {
+  const {
+    products,
+    customer_name,
+    customer_email,
+    time,
+    total_price,
+    aclaraciones,
+  } = req.body;
+
+  // Create a new order object
+  const newOrder = {
+    products,
+    customer_name,
+    customer_email,
+    time,
+    total_price,
+    aclaraciones,
+  };
+
+  // Insert the new order into the "orders" table
+  connection.query("INSERT INTO orders SET ?", newOrder, (err, results) => {
+    if (err) {
+      console.error("Error inserting order:", err);
+      res.status(500).json({ error: "Failed to insert order" });
+      return;
+    }
+
+    // Order successfully inserted
+    console.log("Order inserted successfully");
+    res.status(200).json({ message: "Order inserted successfully" });
+  });
+});
+
+app.get("/getorders", (req, res) => {
+  connection.query("SELECT * FROM orders", (err, results) => {
+    if (err) {
+      // Handle the error
+      console.error("Error fetching orders:", err);
+      res.status(500).json({ error: "Failed to fetch orders" });
+    } else {
+      // Return the fetched orders
+      res.json(results);
+    }
+  });
+});
+
 //inicia servidor
 
 app.listen(port, () => {
