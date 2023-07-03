@@ -7,13 +7,22 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const multer = require('multer')
 const path = require('path')
+const https = require('https')
+const fs = require('fs')
+
+const privateKey = fs.readFileSync('certs/private.pem', 'utf8')
+const certificate = fs.readFileSync('certs/certificate.pem', 'utf8')
+
+const credentials = {
+  key: privateKey,
+  cert: certificate
+}
 
 require('dotenv').config()
 
 //Se crea una instancia de la aplicación Express y se define el puerto en el que se ejecutará el servidor
 const app = express()
 const port = 3000
-
 const allowedOrigins = '*'
 
 //se establece cors para permitir todas las solicitudes de cualquier origen
@@ -284,8 +293,14 @@ app.delete('/orders/:id/delete', (req, res) => {
   })
 })
 
-//inicia servidor
-
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}`)
-})
+// Start the server
+if (process.env.ENV === 'PROD') {
+  https.createServer(credentials, app).listen(process.env.PORT, () => {
+    console.log(`Listening on port ${process.env.PORT}`)
+  })
+} else {
+  app.listen(process.env.PORT, () => {
+    console.log(`Server running on port ${process.env.PORT}`)
+  })
+  //inicia servidor
+}
