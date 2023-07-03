@@ -22,7 +22,7 @@ require('dotenv').config()
 
 //Se crea una instancia de la aplicación Express y se define el puerto en el que se ejecutará el servidor
 const app = express()
-const port = 3000
+
 const allowedOrigins = '*'
 
 //se establece cors para permitir todas las solicitudes de cualquier origen
@@ -85,6 +85,10 @@ app.get('/products', (req, res) => {
     }
     res.json(results)
   })
+})
+
+app.get(`/`, (req, res) => {
+  res.send('Innovate Api')
 })
 
 // Endpoint for inserting a new item with file upload
