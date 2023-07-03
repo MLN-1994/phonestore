@@ -1,4 +1,3 @@
-import './index.css'
 import Banner from './Components/Banner/Banner'
 import LoginScreen from './Components/LoginScreen/LoginScreen'
 import Header from './Components/Header/Header'
