@@ -30,7 +30,7 @@ const ProductDetailContainer = ({ productId }) => {
         {product && (
           <>
             <>
-              <div className="md:my-16">
+              <div className="">
                 <div className="bg-white md:flex m-10 shadow-md rounded-md hover:shadow-2xl">
                   <div className="w-2/3 mx-auto flex justify-center ">
                     <div className="flex items-center">
@@ -60,7 +60,7 @@ const ProductDetailContainer = ({ productId }) => {
 
                       <hr />
 
-                      <div className=" rounded-md my-4">
+                      <div className=" rounded-md my-4 w-2/3 mx-auto">
                         {!isInCart(productId) ? (
                           <ProductCounter
                             max={product.stock}
@@ -70,7 +70,7 @@ const ProductDetailContainer = ({ productId }) => {
                         ) : (
                           <div className="flex justify-center mt-12">
                             <Link className=" " to="/cart">
-                              <button className=" rounded-md font-bold shadow-md py-2 px-4 w-full bg-white border bg-multi-color text-white ">
+                              <button className=" rounded-md font-bold shadow-md  p-4  w-full bg-white border bg-multi-color text-white ">
                                 Finalizar compra
                               </button>
                             </Link>

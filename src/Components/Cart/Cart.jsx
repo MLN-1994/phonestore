@@ -19,7 +19,7 @@ export default function Cart() {
 
   return (
     <>
-      <div className="bg-white mx-auto w-3/4 py-6 my-32 rounded-lg shadow-lg px-16">
+      <div className="bg-white mx-auto w-3/4 py-6 my-10 rounded-lg shadow-lg px-4">
         <h2 className="text-3xl text-zinc-600 font-bold py-6">Tu pedido</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-6">
@@ -50,14 +50,14 @@ export default function Cart() {
           ))}
         </div>
 
-        <div className="font-bold  text-zinc-600 text-xl my-4 px-4">
+        <div className="font-bold flex justify-end  text-zinc-600 text-xl my-4 px-4">
           Total: ${totalPriceCart()}
         </div>
 
         <Formulario/>
         <div className="">
           <button
-            className=" md:px-16 md:py-4 text-blue-600  mx-auto bg-white border border-blue-500 hover:bg-gradient-to-br from-blue-500 to-purple-700 hover:text-white rounded-md shadow hover:shadow-lg text-lg font-bold flex justify-center  "
+            className="p-2 md:p-4   text-blue-600  mx-auto bg-white border border-blue-500 hover:bg-gradient-to-br from-blue-500 to-purple-700 hover:text-white rounded-md shadow hover:shadow-lg text-lg font-bold flex justify-center  "
             onClick={() => checkout()}
           >
             Hacer mi pedido

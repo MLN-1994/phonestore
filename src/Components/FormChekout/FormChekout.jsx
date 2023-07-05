@@ -27,8 +27,10 @@ export default function Formulario() {
 
   return (
     <>
-      <div className="my-4 px-4">
-        <label htmlFor="name" className="block text-lg font-bold">
+    <div className="">
+
+          <div className="my-4 md:px-4 ">
+        <label htmlFor="name" className="block text-lg text-zinc-500 font-bold">
           Nombre:
         </label>
         <input
@@ -40,8 +42,8 @@ export default function Formulario() {
         />
       </div>
 
-      <div className="my-4 px-4">
-        <label htmlFor="email" className="block text-lg font-bold">
+      <div className="my-4 md:px-4">
+        <label htmlFor="email" className="block text-lg text-zinc-500 font-bold">
           Correo Electrónico:
         </label>
         <input
@@ -53,8 +55,8 @@ export default function Formulario() {
         />
       </div>
 
-      <div className="my-4 px-4">
-        <label htmlFor="clarifications" className="block text-lg font-bold">
+      <div className="my-4 md:px-4">
+        <label htmlFor="clarifications" className="block text-lg text-zinc-500 font-bold">
           Aclaraciones:
         </label>
         <textarea
@@ -64,6 +66,8 @@ export default function Formulario() {
           className="border border-gray-300 rounded-md px-2 py-1 w-full"
         />
       </div>
+    </div>
+  
     </>
   );
 }
